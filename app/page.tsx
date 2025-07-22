@@ -80,118 +80,15 @@ interface ScheduleData {
 }
 
 const defaultEmployees: Employee[] = [
-  {
-    id: "1",
-    name: "Adrian",
-    color: "bg-green-200 text-green-800",
-    customHours: {
-      "21.07-early": 12, // ***Adrian special hours
-    },
-  },
-  {
-    id: "2",
-    name: "Vasil",
-    color: "bg-blue-200 text-blue-800",
-    customHours: {
-      "21.07-night": 15, // Vasil bis 15:00
-    },
-  },
-  {
-    id: "3",
-    name: "Sandra",
-    color: "bg-purple-200 text-purple-800",
-    customHours: {
-      "05.07-early": 5.5, // Sandra bis 14:30
-      "21.07-night": 19, // Sandra bis 19:00
-    },
-  },
-  {
-    id: "4",
-    name: "Sabrina",
-    color: "bg-orange-200 text-orange-800",
-    customHours: {
-      "05.07-night": 12.5, // Sabrina von 14:30 bis 03:00
-    },
-  },
+  { id: "1", name: "Adrian", color: "bg-green-200 text-green-800" },
+  { id: "2", name: "Vasil", color: "bg-blue-200 text-blue-800" },
+  { id: "3", name: "Sandra", color: "bg-purple-200 text-purple-800" },
+  { id: "4", name: "Sabrina", color: "bg-orange-200 text-orange-800" },
   { id: "5", name: "Chiara", color: "bg-pink-200 text-pink-800" },
 ]
 
-// July and August data based on the provided schedules
+// Dummy data based on the screenshot
 const dummyAssignments: ShiftAssignment[] = [
-  // JULY 2024 DATA
-  // Week 1 July
-  { date: "01.07", shift: "early", employeeId: "3" }, // Sandra
-  { date: "01.07", shift: "night", employeeId: "1" }, // Adrian
-  { date: "02.07", shift: "early", employeeId: "3" }, // Sandra
-  { date: "02.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "03.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "03.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "04.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "04.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "05.07", shift: "early", employeeId: "3" }, // Sandra bis 14:30
-  { date: "05.07", shift: "night", employeeId: "4" }, // Sabrina von 14:30 bis 03:00
-  { date: "06.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "06.07", shift: "night", employeeId: "2" }, // Vasil
-
-  // Week 2 July
-  { date: "07.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "07.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "08.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "08.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "09.07", shift: "early", employeeId: "3" }, // Sandra
-  { date: "09.07", shift: "night", employeeId: "1" }, // Adrian
-  { date: "10.07", shift: "early", employeeId: "3" }, // Sandra
-  { date: "10.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "11.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "11.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "12.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "12.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "13.07", shift: "early", employeeId: "4" }, // Sabrina
-  { date: "13.07", shift: "night", employeeId: "2" }, // Vasil
-
-  // Week 3 July
-  { date: "14.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "14.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "15.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "15.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "16.07", shift: "early", employeeId: "3" }, // Sandra
-  { date: "16.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "17.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "17.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "18.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "18.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "19.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "19.07", shift: "night", employeeId: "5" }, // Chiara
-  { date: "20.07", shift: "early", employeeId: "4" }, // Sabrina
-  { date: "20.07", shift: "night", employeeId: "2" }, // Vasil
-
-  // Week 4 July
-  { date: "21.07", shift: "early", employeeId: "1" }, // ***Adrian
-  { date: "21.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "22.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "22.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "23.07", shift: "early", employeeId: "3" }, // Sandra
-  { date: "23.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "24.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "24.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "25.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "25.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "26.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "26.07", shift: "night", employeeId: "4" }, // Sabrina
-  { date: "27.07", shift: "early", employeeId: "5" }, // Chiara
-  { date: "27.07", shift: "night", employeeId: "2" }, // Vasil
-
-  // Week 5 July
-  { date: "28.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "28.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "29.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "29.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "30.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "30.07", shift: "night", employeeId: "2" }, // Vasil
-  { date: "31.07", shift: "early", employeeId: "1" }, // Adrian
-  { date: "31.07", shift: "night", employeeId: "2" }, // Vasil
-
-  // AUGUST 2024 DATA (existing)
   // Week 1
   { date: "01.08", shift: "early", employeeId: null },
   { date: "01.08", shift: "night", employeeId: null },
@@ -287,7 +184,7 @@ export default function EmployeeScheduler() {
   const isViewOnly = searchParams?.get("view") === "readonly"
   const scheduleRef = useRef<HTMLDivElement>(null)
 
-  const [currentDate, setCurrentDate] = useState(new Date(2024, 6, 1)) // July 2024 (month 6 = July)
+  const [currentDate, setCurrentDate] = useState(new Date(2024, 7, 1)) // August 2024
   const [employees, setEmployees] = useState<Employee[]>(defaultEmployees)
   const [assignments, setAssignments] = useState<ShiftAssignment[]>(dummyAssignments)
   const [holidays, setHolidays] = useState<Holiday[]>([])
