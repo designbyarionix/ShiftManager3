@@ -3,7 +3,7 @@
 # Run this script as Administrator
 
 param(
-    [string]$ProjectPath = "C:\Users\arion\OneDrive\Documents\GitHubs\shiftmanager2",
+    [string]$ProjectPath = ".",
     [string]$TaskName = "ShiftManager2-AutoBackup",
     [string]$BackupScript = "auto-backup.ps1"
 )
