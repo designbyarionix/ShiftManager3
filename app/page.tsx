@@ -219,9 +219,7 @@ export default function EmployeeScheduler() {
   const [historyIndex, setHistoryIndex] = useState(0)
 
   // Add new state variables after existing state declarations:
-  const [importDialogOpen, setImportDialogOpen] = useState(false)
-  const [importImage, setImportImage] = useState<File | null>(null)
-  const [isImporting, setIsImporting] = useState(false)
+
   const [editingHours, setEditingHours] = useState<{
     employeeId: string
     date: string
@@ -472,6 +470,16 @@ export default function EmployeeScheduler() {
       const newIndex = historyIndex - 1
       setHistoryIndex(newIndex)
       setAssignments(assignmentHistory[newIndex])
+      
+      // Automatically save after undo
+      setTimeout(async () => {
+        try {
+          await saveDataToStorage()
+          console.log('✅ Data saved after undo')
+        } catch (error) {
+          console.error('❌ Failed to save after undo:', error)
+        }
+      }, 100)
     }
   }
 
@@ -480,6 +488,16 @@ export default function EmployeeScheduler() {
       const newIndex = historyIndex + 1
       setHistoryIndex(newIndex)
       setAssignments(assignmentHistory[newIndex])
+      
+      // Automatically save after redo
+      setTimeout(async () => {
+        try {
+          await saveDataToStorage()
+          console.log('✅ Data saved after redo')
+        } catch (error) {
+          console.error('❌ Failed to save after redo:', error)
+        }
+      }, 100)
     }
   }
 
@@ -979,6 +997,16 @@ export default function EmployeeScheduler() {
       }
     })
 
+    // Automatically save after updating day hours
+    setTimeout(async () => {
+      try {
+        await saveDataToStorage()
+        console.log('✅ Data saved after updating day hours')
+      } catch (error) {
+        console.error('❌ Failed to save after updating day hours:', error)
+      }
+    }, 100)
+
     setEditDayOpen(false)
     setEditingDay("")
     setDayEmployeeHours({})
@@ -1026,45 +1054,7 @@ export default function EmployeeScheduler() {
     }
   }
 
-  const importFromImage = async () => {
-    if (!importImage) return
 
-    setIsImporting(true)
-    try {
-      // Simulate AI processing of the image
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
-      // Mock AI results - in real app this would use OCR/AI
-      const mockImportData = [
-        { date: "01.08", shift: "early" as const, employeeId: "1" },
-        { date: "01.08", shift: "night" as const, employeeId: "2" },
-        { date: "02.08", shift: "early" as const, employeeId: "3" },
-        { date: "02.08", shift: "night" as const, employeeId: "4" },
-      ]
-
-      // Apply imported data
-      setAssignments((prev) => {
-        const newAssignments = [...prev]
-        mockImportData.forEach((item) => {
-          const existingIndex = newAssignments.findIndex((a) => a.date === item.date && a.shift === item.shift)
-          if (existingIndex >= 0) {
-            newAssignments[existingIndex] = item
-          } else {
-            newAssignments.push(item)
-          }
-        })
-        return newAssignments
-      })
-
-      setImportDialogOpen(false)
-      setImportImage(null)
-      setNotification({ type: "success", message: "Plan erfolgreich aus Bild importiert!" })
-    } catch (error) {
-      setNotification({ type: "error", message: "Fehler beim Importieren des Bildes!" })
-    } finally {
-      setIsImporting(false)
-    }
-  }
 
   const exportAsImage = async () => {
     if (scheduleRef.current) {
@@ -1693,61 +1683,7 @@ export default function EmployeeScheduler() {
             </Button>
 
 
-            <Dialog open={importDialogOpen} onOpenChange={setImportDialogOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline" size={isMobile ? "sm" : "default"}>
-                  <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                  <span className="text-xs sm:text-sm">Import</span>
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="w-[95vw] max-w-md bg-white">
-                <DialogHeader>
-                  <DialogTitle className="text-lg font-semibold">Plan aus Bild importieren</DialogTitle>
-                </DialogHeader>
-                <div className="space-y-4 p-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Screenshot hochladen</label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={(e) => setImportImage(e.target.files?.[0] || null)}
-                      className="w-full p-2 border border-gray-300 rounded"
-                    />
-                    <p className="text-xs text-gray-500">
-                      Laden Sie einen Screenshot eines vorherigen Schichtplans hoch. Die KI wird versuchen, die
-                      Zuordnungen automatisch zu erkennen.
-                    </p>
-                  </div>
 
-                  {importImage && (
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Vorschau:</label>
-                      <img
-                        src={URL.createObjectURL(importImage) || "/placeholder.svg"}
-                        alt="Import preview"
-                        className="w-full max-h-40 object-contain border rounded"
-                      />
-                    </div>
-                  )}
-
-                  <div className="flex gap-2 pt-4">
-                    <Button onClick={importFromImage} className="flex-1" disabled={!importImage || isImporting}>
-                      {isImporting ? "Importiere..." : "Importieren"}
-                    </Button>
-                    <Button
-                      variant="outline"
-                      onClick={() => {
-                        setImportDialogOpen(false)
-                        setImportImage(null)
-                      }}
-                      className="flex-1"
-                    >
-                      Abbrechen
-                    </Button>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
 
             <Dialog open={isAddInfoOpen} onOpenChange={setIsAddInfoOpen}>
               <DialogTrigger asChild>
