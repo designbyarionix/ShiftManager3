@@ -1229,15 +1229,25 @@ export default function EmployeeScheduler() {
       <div className="print:block hidden">
         <style jsx global>{`
           @media print {
-            body { margin: 0; padding: 8px; font-size: 10px; }
-            .backend-print-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
-            .backend-print-table th, .backend-print-table td { border: 1px solid #000; padding: 4px; text-align: left; font-size: 9px; }
+            * { page-break-inside: avoid !important; }
+            body { margin: 0; padding: 4px; font-size: 8px; }
+            .backend-print-container { page-break-after: avoid !important; page-break-inside: avoid !important; }
+            .backend-print-table { width: 100%; border-collapse: collapse; margin-bottom: 8px; page-break-inside: avoid !important; }
+            .backend-print-table th, .backend-print-table td { border: 1px solid #000; padding: 2px; text-align: left; font-size: 7px; line-height: 1.1; }
             .backend-print-header { background-color: #f3f4f6 !important; -webkit-print-color-adjust: exact; font-weight: bold; }
             .backend-print-total { background-color: #fef3c7 !important; -webkit-print-color-adjust: exact; font-weight: bold; }
             .backend-print-vacation { background-color: #fee2e2 !important; -webkit-print-color-adjust: exact; font-weight: bold; border: 2px solid #dc2626 !important; }
             .backend-print-vacation-cell { background-color: #fef2f2 !important; -webkit-print-color-adjust: exact; font-weight: bold; }
+            h1 { font-size: 12px; margin: 2px 0; page-break-after: avoid !important; }
+            h3 { font-size: 9px; margin: 4px 0 2px 0; page-break-after: avoid !important; }
+            p { font-size: 7px; margin: 1px 0; }
+            .vacation-summary { margin-bottom: 6px; padding: 3px; font-size: 7px; page-break-inside: avoid !important; }
+            .summary-section { page-break-inside: avoid !important; margin-top: 6px; }
+            .notes-section { page-break-inside: avoid !important; margin-top: 6px; }
+            .management-notes { page-break-inside: avoid !important; margin-top: 6px; padding: 3px; font-size: 7px; }
           }
         `}</style>
+        <div className="backend-print-container">
         <div className="text-center mb-4">
           <h1 className="text-lg font-bold">
             BACKEND REPORT - {currentMonth.toUpperCase()} {currentYear}
@@ -1249,9 +1259,9 @@ export default function EmployeeScheduler() {
 
         {/* Vacation Summary - Simple List */}
         {vacations.length > 0 && (
-          <div className="mb-4 p-2 border border-red-300 bg-red-50 rounded">
-            <h3 className="text-sm font-bold text-red-700 mb-2">Urlaubstage:</h3>
-            <div className="text-xs text-red-600">
+          <div className="vacation-summary border border-red-300 bg-red-50 rounded">
+            <h3 className="font-bold text-red-700">Urlaubstage:</h3>
+            <div className="text-red-600">
               {vacations.map((vacation, index) => {
                 const employee = employees.find((e) => e.id === vacation.employeeId)
                 return (
@@ -1322,8 +1332,8 @@ export default function EmployeeScheduler() {
           </tbody>
         </table>
 
-        <div className="mt-4">
-          <h3 className="font-bold mb-2">ZUSAMMENFASSUNG</h3>
+        <div className="summary-section">
+          <h3 className="font-bold">ZUSAMMENFASSUNG</h3>
           <table className="backend-print-table">
             <thead>
               <tr className="backend-print-header">
@@ -1358,8 +1368,8 @@ export default function EmployeeScheduler() {
 
         {/* Notes section for backend print */}
         {dayNotes.length > 0 && (
-          <div className="mt-4">
-            <h3 className="font-bold mb-2">TAGESNOTIZEN</h3>
+          <div className="notes-section">
+            <h3 className="font-bold">TAGESNOTIZEN</h3>
             <table className="backend-print-table">
               <thead>
                 <tr className="backend-print-header">
@@ -1380,12 +1390,13 @@ export default function EmployeeScheduler() {
         )}
 
         {currentMonthInfoBackend && (
-          <div className="mt-4 p-3 border border-gray-400">
+          <div className="management-notes border border-gray-400">
             <strong>Management Notizen:</strong>
             <br />
             {currentMonthInfoBackend.info}
           </div>
         )}
+        </div>
       </div>
     )
   }
