@@ -183,3 +183,61 @@
  ✓ Starting...
 2025-08-22T23:39:32: ✓ Ready in 5.9s
 2025-08-22T23:39:36: ○ Compiling /_not-found ...
+2025-08-22T23:39:56: ✓ Compiled / in 20.6s (908 modules)
+2025-08-22T23:39:59: GET /_next/static/webpack/24185ad0c874ae6b.webpack.hot-update.json 404 in 24015ms
+2025-08-22T23:39:59: GET / 200 in 21277ms
+2025-08-22T23:40:02: GET / 200 in 2430ms
+2025-08-22T23:41:41: ✓ Compiled in 1314ms (439 modules)
+2025-08-22T23:41:41: ✓ Compiled in 774ms (439 modules)
+2025-08-22T23:41:41: GET / 200 in 304ms
+2025-08-22T23:41:42: GET / 200 in 36ms
+2025-08-22T23:41:56: ✓ Compiled in 750ms (439 modules)
+2025-08-22T23:41:58: GET / 200 in 29ms
+2025-08-22T23:43:18: ✓ Compiled in 1904ms (439 modules)
+2025-08-22T23:43:20: ✓ Compiled in 887ms (439 modules)
+2025-08-22T23:43:20: GET / 200 in 41ms
+2025-08-22T23:43:20: GET / 200 in 37ms
+2025-08-22T23:43:26: ✓ Compiled in 998ms (439 modules)
+2025-08-22T23:43:26: GET / 200 in 46ms
+2025-08-22T23:43:36: ✓ Compiled in 917ms (439 modules)
+2025-08-22T23:43:37: GET / 200 in 43ms
+2025-08-22T23:43:48: ✓ Compiled in 955ms (439 modules)
+2025-08-22T23:43:48: GET / 200 in 27ms
+2025-08-22T23:43:52: ✓ Compiled in 1272ms (439 modules)
+2025-08-22T23:43:53: GET / 200 in 35ms
+2025-08-22T23:45:57: ✓ Compiled in 1914ms (439 modules)
+2025-08-22T23:45:58: ✓ Compiled in 931ms (439 modules)
+2025-08-22T23:46:01: GET / 200 in 24ms
+2025-08-22T23:46:01: GET / 200 in 28ms
+2025-08-22T23:46:23: ✓ Compiled in 1283ms (439 modules)
+2025-08-22T23:46:24: ✓ Compiled in 1150ms (439 modules)
+2025-08-22T23:46:31: ✓ Compiled in 1275ms (439 modules)
+2025-08-22T23:46:32: ✓ Compiled in 635ms (439 modules)
+2025-08-22T23:46:33: GET / 200 in 22ms
+2025-08-22T23:46:33: GET / 200 in 19ms
+2025-08-22T23:46:42: GET / 200 in 28ms
+2025-08-22T23:46:48: GET / 200 in 25ms
+2025-08-22T23:47:00: ✓ Compiled in 1344ms (439 modules)
+2025-08-22T23:47:02: ✓ Compiled in 1255ms (439 modules)
+2025-08-22T23:47:03: ✓ Compiled in 1433ms (439 modules)
+2025-08-22T23:47:21: ✓ Compiled in 1571ms (439 modules)
+2025-08-22T23:47:23: ✓ Compiled in 1336ms (439 modules)
+2025-08-22T23:47:40: ✓ Compiled in 1949ms (439 modules)
+2025-08-22T23:47:42: ✓ Compiled in 1037ms (439 modules)
+2025-08-22T23:47:52: ✓ Compiled in 1281ms (439 modules)
+2025-08-22T23:48:08: ✓ Compiled in 1051ms (439 modules)
+2025-08-22T23:48:26: ✓ Compiled in 710ms (439 modules)
+2025-08-22T23:48:27: ✓ Compiled in 636ms (439 modules)
+2025-08-22T23:48:28: GET / 200 in 26ms
+2025-08-22T23:48:28: GET / 200 in 23ms
+2025-08-22T23:48:29: GET / 200 in 23ms
+2025-08-22T23:48:29: GET / 200 in 22ms
+2025-08-22T23:48:29: GET / 200 in 37ms
+2025-08-22T23:48:29: GET / 200 in 26ms
+2025-08-22T23:48:29: GET / 200 in 23ms
+2025-08-22T23:48:29: GET / 200 in 24ms
+2025-08-22T23:48:30: GET / 200 in 20ms
+2025-08-22T23:48:30: GET / 200 in 24ms
+2025-08-22T23:48:30: GET / 200 in 21ms
+2025-08-22T23:48:39: ✓ Compiled in 884ms (439 modules)
+2025-08-22T23:48:40: GET / 200 in 29ms
