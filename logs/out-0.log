@@ -1,0 +1,185 @@
+2025-08-22T22:35:11: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:35:11: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:35:16: 📤 npm process exited with code 0
+2025-08-22T22:35:18: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:35:18: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:35:23: 📤 npm process exited with code 0
+2025-08-22T22:35:26: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:35:26: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:35:31: 📤 npm process exited with code 0
+2025-08-22T22:35:32: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:35:32: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:35:37: 📤 npm process exited with code 0
+2025-08-22T22:35:37: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:35:37: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:35:41: 📤 npm process exited with code 0
+2025-08-22T22:39:00: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:39:00: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:39:01: > employee-scheduler@0.1.0 dev
+> next dev
+2025-08-22T22:39:03: [?25h
+2025-08-22T22:39:03: 📤 npm process exited with code 0
+2025-08-22T22:40:55: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:40:55: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:40:56: > employee-scheduler@0.1.0 dev
+> next dev
+2025-08-22T22:40:59: ▲ Next.js 15.2.4
+2025-08-22T22:40:59: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+
+ ✓ Starting...
+2025-08-22T22:41:04: ✓ Ready in 5.7s
+2025-08-22T22:43:52: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:43:52: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:43:53: > employee-scheduler@0.1.0 dev
+> next dev
+2025-08-22T22:43:55: ▲ Next.js 15.2.4
+2025-08-22T22:43:55: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+2025-08-22T22:43:55: ✓ Starting...
+2025-08-22T22:43:59: ✓ Ready in 4.5s
+2025-08-22T22:48:00: ○ Compiling / ...
+2025-08-22T22:48:10: ✓ Compiled / in 11.1s (910 modules)
+2025-08-22T22:48:14: GET / 200 in 14796ms
+2025-08-22T22:48:14: ✓ Compiled in 3.7s (442 modules)
+2025-08-22T22:52:12: ✓ Compiled in 1676ms (442 modules)
+2025-08-22T22:52:12: GET / 200 in 46ms
+2025-08-22T22:55:31: GET / 200 in 1439ms
+2025-08-22T22:57:03: ✓ Compiled in 1344ms (442 modules)
+2025-08-22T22:57:03: GET / 200 in 52ms
+2025-08-22T22:57:41: GET / 200 in 1859ms
+2025-08-22T22:58:26: ✓ Compiled in 1305ms (442 modules)
+2025-08-22T22:58:26: GET / 200 in 38ms
+2025-08-22T22:59:53: ✓ Compiled in 2s (442 modules)
+2025-08-22T22:59:55: ✓ Compiled in 1687ms (442 modules)
+2025-08-22T23:00:02: GET / 200 in 44ms
+2025-08-22T23:00:04: GET / 200 in 32ms
+2025-08-22T23:01:12: ✓ Compiled in 1111ms (442 modules)
+2025-08-22T23:01:12: GET / 200 in 39ms
+2025-08-22T23:01:22: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T23:01:22: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T23:01:24: > employee-scheduler@0.1.0 dev
+> next dev -p 3001
+2025-08-22T23:01:27: ▲ Next.js 15.2.4
+2025-08-22T23:01:27: - Local:        http://localhost:3001
+2025-08-22T23:01:27: - Network:      http://169.254.83.107:3001
+2025-08-22T23:01:27: 
+2025-08-22T23:01:27: ✓ Starting...
+2025-08-22T23:01:32: ✓ Ready in 5.6s
+2025-08-22T23:03:36: ○ Compiling / ...
+2025-08-22T23:03:47: ✓ Compiled / in 11.7s (910 modules)
+2025-08-22T23:03:52: GET / 200 in 16321ms
+2025-08-22T23:03:52: ✓ Compiled in 4.5s (442 modules)
+2025-08-22T23:06:44: ✓ Compiled in 957ms (442 modules)
+2025-08-22T23:06:44: GET / 200 in 41ms
+2025-08-22T23:06:45: ✓ Compiled in 623ms (442 modules)
+2025-08-22T23:06:46: GET / 200 in 35ms
+2025-08-22T23:11:35: ✓ Compiled in 949ms (442 modules)
+2025-08-22T23:11:35: GET / 200 in 32ms
+2025-08-22T23:16:27: ✓ Compiled in 1491ms (442 modules)
+2025-08-22T23:16:33: GET / 200 in 43ms
+2025-08-22T23:21:17: ✓ Compiled in 1074ms (442 modules)
+2025-08-22T23:21:18: ✓ Compiled in 699ms (442 modules)
+2025-08-22T23:21:18: GET / 200 in 667ms
+2025-08-22T23:21:18: GET / 200 in 34ms
+2025-08-22T23:23:48: GET / 200 in 2005ms
+2025-08-22T23:25:01: ✓ Compiled in 2.6s (442 modules)
+2025-08-22T23:25:07: ✓ Compiled in 2.9s (442 modules)
+2025-08-22T23:25:10: ✓ Compiled in 2.3s (442 modules)
+2025-08-22T23:25:12: ✓ Compiled in 1598ms (442 modules)
+2025-08-22T23:25:12: GET / 200 in 533ms
+2025-08-22T23:25:26: GET / 200 in 28ms
+2025-08-22T23:25:27: GET / 200 in 29ms
+2025-08-22T23:25:27: GET / 200 in 26ms
+2025-08-22T23:26:09: ✓ Compiled in 1169ms (442 modules)
+2025-08-22T23:26:10: GET / 200 in 131ms
+2025-08-22T23:26:12: ✓ Compiled in 1745ms (442 modules)
+2025-08-22T23:28:34: ✓ Compiled in 978ms (442 modules)
+2025-08-22T23:28:35: ✓ Compiled in 775ms (442 modules)
+2025-08-22T23:28:45: ✓ Compiled in 3.3s (910 modules)
+2025-08-22T23:28:52: ✓ Compiled in 664ms (442 modules)
+2025-08-22T23:29:13: ✓ Compiled in 2.1s (910 modules)
+2025-08-22T23:29:16: ✓ Compiled in 942ms (442 modules)
+2025-08-22T23:29:17: ✓ Compiled in 839ms (442 modules)
+2025-08-22T23:29:19: ✓ Compiled in 840ms (442 modules)
+2025-08-22T23:29:41: ✓ Compiled in 3s (910 modules)
+2025-08-22T23:29:47: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T23:29:47: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T23:29:47: > employee-scheduler@0.1.0 dev
+> next dev -p 3001
+2025-08-22T23:29:50: ▲ Next.js 15.2.4
+2025-08-22T23:29:50: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+
+ ✓ Starting...
+2025-08-22T23:29:54: ✓ Ready in 4.7s
+2025-08-22T23:30:05: ○ Compiling / ...
+2025-08-22T23:30:16: ✓ Compiled / in 11.2s (910 modules)
+2025-08-22T23:30:19: GET / 200 in 14143ms
+2025-08-22T23:30:19: ✓ Compiled in 2.9s (442 modules)
+2025-08-22T23:31:35: ✓ Compiled in 3.2s (910 modules)
+2025-08-22T23:31:36: GET / 200 in 180ms
+2025-08-22T23:31:54: ✓ Compiled in 2.3s (910 modules)
+2025-08-22T23:31:55: GET / 200 in 97ms
+2025-08-22T23:32:02: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T23:32:02: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T23:32:02: > employee-scheduler@0.1.0 dev
+> next dev -p 3001
+2025-08-22T23:32:05: ▲ Next.js 15.2.4
+2025-08-22T23:32:05: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+2025-08-22T23:32:05: ✓ Starting...
+2025-08-22T23:32:11: ✓ Ready in 6.2s
+2025-08-22T23:33:01: ○ Compiling / ...
+2025-08-22T23:33:09: ✓ Compiled / in 8.2s (910 modules)
+2025-08-22T23:33:12: GET / 200 in 11255ms
+2025-08-22T23:33:12: ✓ Compiled in 3s (442 modules)
+2025-08-22T23:33:38: GET / 200 in 1431ms
+2025-08-22T23:34:04: ✓ Compiled in 1023ms (442 modules)
+2025-08-22T23:34:04: GET / 200 in 36ms
+2025-08-22T23:34:06: ✓ Compiled in 910ms (442 modules)
+2025-08-22T23:34:13: ✓ Compiled in 5.4s (910 modules)
+2025-08-22T23:34:14: GET / 200 in 209ms
+2025-08-22T23:34:14: GET / 200 in 31ms
+2025-08-22T23:34:33: ○ Compiling /_error ...
+2025-08-22T23:34:36: ✓ Compiled /_error in 4.2s (1224 modules)
+2025-08-22T23:34:38: GET / 500 in 9140ms
+2025-08-22T23:34:41: 📤 npm process exited with code 1
+2025-08-22T23:34:42: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T23:34:42: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T23:34:43: > employee-scheduler@0.1.0 dev
+> next dev -p 3001
+2025-08-22T23:34:46: ▲ Next.js 15.2.4
+2025-08-22T23:34:46: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+
+ ✓ Starting...
+2025-08-22T23:34:50: ✓ Ready in 5.3s
+2025-08-22T23:34:59: ○ Compiling / ...
+2025-08-22T23:35:08: ✓ Compiled / in 9.3s (910 modules)
+2025-08-22T23:35:12: GET / 200 in 12515ms
+2025-08-22T23:35:12: ✓ Compiled in 4.4s (442 modules)
+2025-08-22T23:38:41: ✓ Compiled in 1324ms (442 modules)
+2025-08-22T23:38:42: ✓ Compiled in 1073ms (442 modules)
+2025-08-22T23:38:42: GET / 200 in 247ms
+2025-08-22T23:38:43: GET / 200 in 35ms
+2025-08-22T23:38:50: ✓ Compiled in 4.4s (908 modules)
+2025-08-22T23:38:51: GET / 200 in 245ms
+2025-08-22T23:39:00: ✓ Compiled in 3.7s (906 modules)
+2025-08-22T23:39:03: ✓ Compiled in 2.1s (440 modules)
+2025-08-22T23:39:08: ✓ Compiled in 2.4s (906 modules)
+2025-08-22T23:39:09: GET / 200 in 126ms
+2025-08-22T23:39:17: ✓ Compiled in 2.7s (904 modules)
+2025-08-22T23:39:22: GET / 200 in 135ms
+2025-08-22T23:39:22: GET / 200 in 31ms
+2025-08-22T23:39:23: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T23:39:23: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T23:39:24: > employee-scheduler@0.1.0 dev
+> next dev -p 3001
+2025-08-22T23:39:27: ▲ Next.js 15.2.4
+2025-08-22T23:39:27: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+
+ ✓ Starting...
+2025-08-22T23:39:32: ✓ Ready in 5.9s
+2025-08-22T23:39:36: ○ Compiling /_not-found ...

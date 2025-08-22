@@ -1,0 +1,800 @@
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\node_modules\.bin\next:2
+basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+          ^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\node_modules\.bin\next:2
+basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+          ^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\node_modules\.bin\next:2
+basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+          ^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\node_modules\.bin\next:2
+basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+          ^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\node_modules\.bin\next:2
+basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+          ^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\start.bat:1
+@echo off
+^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\start.bat:1
+@echo off
+^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\start.bat:1
+@echo off
+^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\start.bat:1
+@echo off
+^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\start.bat:1
+@echo off
+^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+2025-08-22T22:35:11: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:35:11: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:35:16: 📤 npm process exited with code 0
+2025-08-22T22:35:18: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:35:18: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:35:23: 📤 npm process exited with code 0
+2025-08-22T22:35:26: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:35:26: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:35:31: 📤 npm process exited with code 0
+2025-08-22T22:35:32: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:35:32: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:35:37: 📤 npm process exited with code 0
+2025-08-22T22:35:37: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:35:37: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:35:41: 📤 npm process exited with code 0
+2025-08-22T22:39:00: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:39:00: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:39:01: > employee-scheduler@0.1.0 dev
+> next dev
+2025-08-22T22:39:03: ⨯ Failed to start server
+2025-08-22T22:39:03: Error: listen EADDRINUSE: address already in use :::3000
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+2025-08-22T22:39:03: [?25h
+2025-08-22T22:39:03: 📤 npm process exited with code 0
+2025-08-22T22:40:55: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:40:55: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:40:56: > employee-scheduler@0.1.0 dev
+> next dev
+2025-08-22T22:40:59: ▲ Next.js 15.2.4
+2025-08-22T22:40:59: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+
+ ✓ Starting...
+2025-08-22T22:41:04: ✓ Ready in 5.7s
+2025-08-22T22:43:52: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T22:43:52: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T22:43:53: > employee-scheduler@0.1.0 dev
+> next dev
+2025-08-22T22:43:55: ▲ Next.js 15.2.4
+2025-08-22T22:43:55: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+2025-08-22T22:43:55: ✓ Starting...
+2025-08-22T22:43:59: ✓ Ready in 4.5s
+2025-08-22T22:48:00: ○ Compiling / ...
+2025-08-22T22:48:10: ✓ Compiled / in 11.1s (910 modules)
+2025-08-22T22:48:11: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:48:11: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:48:12: Each child in a list should have a unique "key" prop.
+
+Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
+2025-08-22T22:48:14: GET / 200 in 14796ms
+2025-08-22T22:48:14: ✓ Compiled in 3.7s (442 modules)
+2025-08-22T22:52:12: ✓ Compiled in 1676ms (442 modules)
+2025-08-22T22:52:12: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:52:12: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:52:12: GET / 200 in 46ms
+2025-08-22T22:55:30: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:55:30: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:55:30: Each child in a list should have a unique "key" prop.
+
+Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
+2025-08-22T22:55:31: GET / 200 in 1439ms
+2025-08-22T22:57:03: ✓ Compiled in 1344ms (442 modules)
+2025-08-22T22:57:03: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:57:03: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:57:03: GET / 200 in 52ms
+2025-08-22T22:57:39: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:57:39: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:57:40: Each child in a list should have a unique "key" prop.
+
+Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
+2025-08-22T22:57:41: GET / 200 in 1859ms
+2025-08-22T22:58:26: ✓ Compiled in 1305ms (442 modules)
+2025-08-22T22:58:26: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:58:26: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T22:58:26: GET / 200 in 38ms
+2025-08-22T22:59:53: ✓ Compiled in 2s (442 modules)
+2025-08-22T22:59:55: ✓ Compiled in 1687ms (442 modules)
+2025-08-22T23:00:02: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:00:02: GET / 200 in 44ms
+2025-08-22T23:00:04: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:00:04: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:00:04: GET / 200 in 32ms
+2025-08-22T23:01:12: ✓ Compiled in 1111ms (442 modules)
+2025-08-22T23:01:12: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:01:12: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:01:12: GET / 200 in 39ms
+2025-08-22T23:01:22: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T23:01:22: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T23:01:24: > employee-scheduler@0.1.0 dev
+> next dev -p 3001
+2025-08-22T23:01:27: ▲ Next.js 15.2.4
+2025-08-22T23:01:27: - Local:        http://localhost:3001
+2025-08-22T23:01:27: - Network:      http://169.254.83.107:3001
+2025-08-22T23:01:27: 
+2025-08-22T23:01:27: ✓ Starting...
+2025-08-22T23:01:32: ✓ Ready in 5.6s
+2025-08-22T23:03:36: ○ Compiling / ...
+2025-08-22T23:03:47: ✓ Compiled / in 11.7s (910 modules)
+2025-08-22T23:03:49: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:03:49: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:03:50: Each child in a list should have a unique "key" prop.
+
+Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
+2025-08-22T23:03:52: GET / 200 in 16321ms
+2025-08-22T23:03:52: ✓ Compiled in 4.5s (442 modules)
+2025-08-22T23:06:44: ✓ Compiled in 957ms (442 modules)
+2025-08-22T23:06:44: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:06:44: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:06:44: GET / 200 in 41ms
+2025-08-22T23:06:45: ✓ Compiled in 623ms (442 modules)
+2025-08-22T23:06:46: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:06:46: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:06:46: GET / 200 in 35ms
+2025-08-22T23:11:35: ✓ Compiled in 949ms (442 modules)
+2025-08-22T23:11:35: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:11:35: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:11:35: GET / 200 in 32ms
+2025-08-22T23:16:27: ✓ Compiled in 1491ms (442 modules)
+2025-08-22T23:16:33: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:16:33: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:16:33: GET / 200 in 43ms
+2025-08-22T23:21:17: ✓ Compiled in 1074ms (442 modules)
+2025-08-22T23:21:18: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:21:18: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:21:18: ✓ Compiled in 699ms (442 modules)
+2025-08-22T23:21:18: GET / 200 in 667ms
+2025-08-22T23:21:18: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:21:18: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:21:18: GET / 200 in 34ms
+2025-08-22T23:23:46: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:23:47: Each child in a list should have a unique "key" prop.
+
+Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
+2025-08-22T23:23:48: GET / 200 in 2005ms
+2025-08-22T23:25:01: ✓ Compiled in 2.6s (442 modules)
+2025-08-22T23:25:07: ✓ Compiled in 2.9s (442 modules)
+2025-08-22T23:25:10: ✓ Compiled in 2.3s (442 modules)
+2025-08-22T23:25:12: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:25:12: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:25:12: ✓ Compiled in 1598ms (442 modules)
+2025-08-22T23:25:12: GET / 200 in 533ms
+2025-08-22T23:25:26: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:25:26: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:25:26: GET / 200 in 28ms
+2025-08-22T23:25:27: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:25:27: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:25:27: GET / 200 in 29ms
+2025-08-22T23:25:27: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:25:27: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:25:27: GET / 200 in 26ms
+2025-08-22T23:26:09: ✓ Compiled in 1169ms (442 modules)
+2025-08-22T23:26:10: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:26:10: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:26:10: GET / 200 in 131ms
+2025-08-22T23:26:12: ✓ Compiled in 1745ms (442 modules)
+2025-08-22T23:28:34: ✓ Compiled in 978ms (442 modules)
+2025-08-22T23:28:35: ✓ Compiled in 775ms (442 modules)
+2025-08-22T23:28:45: ✓ Compiled in 3.3s (910 modules)
+2025-08-22T23:28:52: ✓ Compiled in 664ms (442 modules)
+2025-08-22T23:29:13: ✓ Compiled in 2.1s (910 modules)
+2025-08-22T23:29:16: ✓ Compiled in 942ms (442 modules)
+2025-08-22T23:29:17: ✓ Compiled in 839ms (442 modules)
+2025-08-22T23:29:19: ✓ Compiled in 840ms (442 modules)
+2025-08-22T23:29:41: ✓ Compiled in 3s (910 modules)
+2025-08-22T23:29:47: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T23:29:47: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T23:29:47: > employee-scheduler@0.1.0 dev
+> next dev -p 3001
+2025-08-22T23:29:50: ▲ Next.js 15.2.4
+2025-08-22T23:29:50: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+
+ ✓ Starting...
+2025-08-22T23:29:54: ✓ Ready in 4.7s
+2025-08-22T23:30:05: ○ Compiling / ...
+2025-08-22T23:30:16: ✓ Compiled / in 11.2s (910 modules)
+2025-08-22T23:30:16: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:30:16: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:30:17: Each child in a list should have a unique "key" prop.
+
+Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
+2025-08-22T23:30:19: GET / 200 in 14143ms
+2025-08-22T23:30:19: ✓ Compiled in 2.9s (442 modules)
+2025-08-22T23:31:35: ✓ Compiled in 3.2s (910 modules)
+2025-08-22T23:31:36: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:31:36: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:31:36: GET / 200 in 180ms
+2025-08-22T23:31:54: ✓ Compiled in 2.3s (910 modules)
+2025-08-22T23:31:55: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:31:55: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:31:55: GET / 200 in 97ms
+2025-08-22T23:32:02: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T23:32:02: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T23:32:02: > employee-scheduler@0.1.0 dev
+> next dev -p 3001
+2025-08-22T23:32:05: ▲ Next.js 15.2.4
+2025-08-22T23:32:05: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+2025-08-22T23:32:05: ✓ Starting...
+2025-08-22T23:32:11: ✓ Ready in 6.2s
+2025-08-22T23:33:01: ○ Compiling / ...
+2025-08-22T23:33:09: ✓ Compiled / in 8.2s (910 modules)
+2025-08-22T23:33:10: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:33:10: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:33:10: Each child in a list should have a unique "key" prop.
+
+Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
+2025-08-22T23:33:12: GET / 200 in 11255ms
+2025-08-22T23:33:12: ✓ Compiled in 3s (442 modules)
+2025-08-22T23:33:36: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:33:36: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:33:37: Each child in a list should have a unique "key" prop.
+
+Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
+2025-08-22T23:33:38: GET / 200 in 1431ms
+2025-08-22T23:34:04: ✓ Compiled in 1023ms (442 modules)
+2025-08-22T23:34:04: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:34:04: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:34:04: GET / 200 in 36ms
+2025-08-22T23:34:06: ✓ Compiled in 910ms (442 modules)
+2025-08-22T23:34:13: ✓ Compiled in 5.4s (910 modules)
+2025-08-22T23:34:14: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:34:14: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:34:14: GET / 200 in 209ms
+2025-08-22T23:34:14: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:34:14: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:34:14: GET / 200 in 31ms
+2025-08-22T23:34:27: ⨯ ./app/page.tsx
+Error:   [31mx[0m Unexpected token `div`. Expected jsx identifier
+      ,-[[36;1;4mC:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\app\page.tsx[0m:1583:1]
+ [2m1580[0m |   }
+ [2m1581[0m | 
+ [2m1582[0m |   return (
+ [2m1583[0m |     <div className={`p-2 sm:p-4 max-w-full mx-auto ${isViewOnly ? "bg-gray-50" : ""}`}>
+      : [35;1m     ^^^[0m
+ [2m1584[0m |       {/* Storage Status */}
+ [2m1585[0m |       {storageStatus !== "ready" && (
+ [2m1586[0m |         <Alert className="mb-4 border-blue-500 bg-blue-50">
+      `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./app/page.tsx
+2025-08-22T23:34:33: ○ Compiling /_error ...
+2025-08-22T23:34:36: ✓ Compiled /_error in 4.2s (1224 modules)
+2025-08-22T23:34:38: GET / 500 in 9140ms
+2025-08-22T23:34:41: 📤 npm process exited with code 1
+2025-08-22T23:34:42: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T23:34:42: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T23:34:43: > employee-scheduler@0.1.0 dev
+> next dev -p 3001
+2025-08-22T23:34:46: ▲ Next.js 15.2.4
+2025-08-22T23:34:46: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+
+ ✓ Starting...
+2025-08-22T23:34:50: ✓ Ready in 5.3s
+2025-08-22T23:34:59: ○ Compiling / ...
+2025-08-22T23:35:08: ✓ Compiled / in 9.3s (910 modules)
+2025-08-22T23:35:08: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:35:08: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:35:08: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:35:08: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:35:09: Each child in a list should have a unique "key" prop.
+
+Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
+2025-08-22T23:35:10: Each child in a list should have a unique "key" prop.
+
+Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
+2025-08-22T23:35:12: GET / 200 in 12515ms
+2025-08-22T23:35:12: ✓ Compiled in 4.4s (442 modules)
+2025-08-22T23:38:41: ✓ Compiled in 1324ms (442 modules)
+2025-08-22T23:38:42: ✓ Compiled in 1073ms (442 modules)
+2025-08-22T23:38:42: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:38:42: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:38:42: GET / 200 in 247ms
+2025-08-22T23:38:43: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:38:43: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:38:43: GET / 200 in 35ms
+2025-08-22T23:38:50: ✓ Compiled in 4.4s (908 modules)
+2025-08-22T23:38:51: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:38:51: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:38:51: GET / 200 in 245ms
+2025-08-22T23:39:00: ✓ Compiled in 3.7s (906 modules)
+2025-08-22T23:39:03: ✓ Compiled in 2.1s (440 modules)
+2025-08-22T23:39:08: ✓ Compiled in 2.4s (906 modules)
+2025-08-22T23:39:09: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:39:09: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:39:09: GET / 200 in 126ms
+2025-08-22T23:39:17: ✓ Compiled in 2.7s (904 modules)
+2025-08-22T23:39:22: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:39:22: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:39:22: GET / 200 in 135ms
+2025-08-22T23:39:22: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:39:22: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+2025-08-22T23:39:22: GET / 200 in 31ms
+2025-08-22T23:39:23: 🚀 Starting ShiftManager2 with PM2...
+2025-08-22T23:39:23: 📁 Working directory: C:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2
+2025-08-22T23:39:24: > employee-scheduler@0.1.0 dev
+> next dev -p 3001
+2025-08-22T23:39:27: ▲ Next.js 15.2.4
+2025-08-22T23:39:27: - Local:        http://localhost:3001
+   - Network:      http://169.254.83.107:3001
+
+ ✓ Starting...
+2025-08-22T23:39:32: ✓ Ready in 5.9s
+2025-08-22T23:39:36: ○ Compiling /_not-found ...

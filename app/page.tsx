@@ -30,6 +30,9 @@ import {
 } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import html2canvas from "html2canvas"
+import { storageWrapper } from "@/lib/storage-wrapper"
+import { migrateFromLocalStorage, verifyMigration } from "@/lib/migrate-data"
+import { getStorageStats } from "@/lib/storage-utils"
 
 interface Employee {
   id: string
@@ -184,7 +187,14 @@ export default function EmployeeScheduler() {
   const isViewOnly = searchParams?.get("view") === "readonly"
   const scheduleRef = useRef<HTMLDivElement>(null)
 
-  const [currentDate, setCurrentDate] = useState(new Date(2024, 7, 1)) // August 2024
+  const [currentDate, setCurrentDate] = useState(() => {
+    const now = new Date()
+    // If we're in August 2025, use current date, otherwise default to August 1st, 2025
+    if (now.getFullYear() === 2025 && now.getMonth() === 7) {
+      return now
+    }
+    return new Date(2025, 7, 1) // August 1st, 2025
+  })
   const [employees, setEmployees] = useState<Employee[]>(defaultEmployees)
   const [assignments, setAssignments] = useState<ShiftAssignment[]>(dummyAssignments)
   const [holidays, setHolidays] = useState<Holiday[]>([])
@@ -202,6 +212,7 @@ export default function EmployeeScheduler() {
   const [lastUpdate, setLastUpdate] = useState(Date.now())
   const [isMobile, setIsMobile] = useState(false)
   const [notification, setNotification] = useState<{ type: "success" | "error"; message: string } | null>(null)
+  const [storageStatus, setStorageStatus] = useState<"migrating" | "indexeddb" | "localstorage" | "ready">("migrating")
 
   // Add after existing state declarations
   const [assignmentHistory, setAssignmentHistory] = useState<ShiftAssignment[][]>([dummyAssignments])
@@ -254,6 +265,43 @@ export default function EmployeeScheduler() {
     return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
+  // Migrate data to IndexedDB on component mount
+  useEffect(() => {
+    const migrateData = async () => {
+      try {
+        setStorageStatus("migrating")
+        
+        // Verify IndexedDB is working
+        const isWorking = await verifyMigration()
+        if (!isWorking) {
+          console.warn('IndexedDB not available, using localStorage fallback')
+          setStorageStatus("localstorage")
+          return
+        }
+
+        // Migrate existing data
+        const migrationResult = await migrateFromLocalStorage()
+        if (migrationResult.success) {
+          console.log(`✅ Successfully migrated ${migrationResult.migratedKeys.length} items to IndexedDB`)
+          setStorageStatus("indexeddb")
+          // Reload data after migration
+          await loadData()
+          setStorageStatus("ready")
+        } else {
+          console.warn('Migration had some errors:', migrationResult.errors)
+          setStorageStatus("localstorage")
+          await loadData()
+          setStorageStatus("ready")
+        }
+      } catch (error) {
+        console.error('Migration failed:', error)
+        setStorageStatus("localstorage")
+      }
+    }
+
+    migrateData()
+  }, [])
+
   // Auto-refresh for view-only mode
   useEffect(() => {
     if (isViewOnly) {
@@ -291,6 +339,7 @@ export default function EmployeeScheduler() {
     for (let i = 1; i <= daysInMonth; i++) {
       const dayDate = new Date(year, month, i)
       const dayOfWeek = dayDate.getDay()
+      // Sunday = 0, Monday = 1, ..., Saturday = 6
       const adjustedDayOfWeek = dayOfWeek === 0 ? 6 : dayOfWeek - 1
       const fullDate = `${i.toString().padStart(2, "0")}.${(month + 1).toString().padStart(2, "0")}`
 
@@ -387,9 +436,13 @@ export default function EmployeeScheduler() {
   }
 
   const updateAssignment = (date: string, shift: "early" | "night", employeeId: string | null) => {
+    console.log(`🔄 updateAssignment called: ${date} ${shift} -> ${employeeId}`)
+    
     setAssignments((prev) => {
       const filtered = prev.filter((a) => !(a.date === date && a.shift === shift))
       const newAssignments = employeeId ? [...filtered, { date, shift, employeeId }] : filtered
+
+      console.log(`📝 New assignments:`, newAssignments)
 
       // Add to history for undo functionality
       setAssignmentHistory((history) => {
@@ -398,6 +451,17 @@ export default function EmployeeScheduler() {
         return newHistory.slice(-50) // Keep last 50 changes
       })
       setHistoryIndex((prev) => Math.min(prev + 1, 49))
+
+      // Automatically save to localStorage after updating assignments
+      setTimeout(async () => {
+        console.log(`💾 Auto-saving after assignment update...`)
+        try {
+          await saveDataToStorage()
+          console.log(`✅ Auto-save completed successfully`)
+        } catch (error) {
+          console.error(`❌ Auto-save failed:`, error)
+        }
+      }, 100)
 
       return newAssignments
     })
@@ -445,6 +509,11 @@ export default function EmployeeScheduler() {
       }
       return [...prev, { date }]
     })
+
+          // Automatically save to localStorage after updating holidays
+      setTimeout(async () => {
+        await saveDataToStorage()
+      }, 100)
   }
 
   const addEmployee = () => {
@@ -460,6 +529,11 @@ export default function EmployeeScheduler() {
       setEmployees((prev) => [...prev, newEmployee])
       setNewEmployeeName("")
       setIsAddEmployeeOpen(false)
+
+      // Automatically save to localStorage after adding employee
+      setTimeout(async () => {
+        await saveDataToStorage()
+      }, 100)
     }
   }
 
@@ -477,6 +551,11 @@ export default function EmployeeScheduler() {
       setVacationEnd("")
       setVacationDescription("")
       setIsAddVacationOpen(false)
+
+      // Automatically save to localStorage after adding vacation
+      setTimeout(async () => {
+        await saveDataToStorage()
+      }, 100)
     }
   }
 
@@ -500,6 +579,11 @@ export default function EmployeeScheduler() {
       })
       setMonthInfo("")
       setIsAddInfoOpen(false)
+
+      // Automatically save to localStorage after adding month info
+      setTimeout(async () => {
+        await saveDataToStorage()
+      }, 100)
     }
   }
 
@@ -512,10 +596,23 @@ export default function EmployeeScheduler() {
     )
     setMonthInfo("")
     setIsAddInfoOpen(false)
+
+          // Automatically save to localStorage after removing month info
+      setTimeout(async () => {
+        await saveDataToStorage()
+      }, 100)
   }
 
   const generateDataHash = (data: any) => {
-    return btoa(JSON.stringify(data)).replace(/[+/=]/g, "").slice(0, 16)
+    // Create a simple hash from the data
+    const str = JSON.stringify(data);
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32-bit integer
+    }
+    return Math.abs(hash).toString(36).slice(0, 16);
   }
 
   const updateCustomHours = (employeeId: string, date: string, shift: "early" | "night", hours: number) => {
@@ -536,8 +633,12 @@ export default function EmployeeScheduler() {
       })
 
       // Автоматично запазване
-      setTimeout(() => {
-        saveDataToStorage(updated)
+      setTimeout(async () => {
+        try {
+          await saveDataToStorage(updated)
+        } catch (error) {
+          console.error('Failed to save custom hours:', error)
+        }
       }, 100)
 
       return updated
@@ -550,7 +651,7 @@ export default function EmployeeScheduler() {
     })
   }
 
-  const saveDataToStorage = (updatedEmployees?: Employee[]) => {
+  const saveDataToStorage = async (updatedEmployees?: Employee[]) => {
     const saveKey = `schedule-${currentDate.getMonth()}-${currentDate.getFullYear()}`
     const currentEmployees = updatedEmployees || employees
 
@@ -575,7 +676,19 @@ export default function EmployeeScheduler() {
       dayNotes,
     })
 
-    localStorage.setItem(saveKey, JSON.stringify(dataToSave))
+    console.log(`🔄 Saving data to storage: ${saveKey}`)
+    console.log('Data to save:', dataToSave)
+
+    try {
+      // Save to storage wrapper (which handles both IndexedDB and localStorage)
+      await storageWrapper.setItem(saveKey, JSON.stringify(dataToSave))
+      console.log('✅ Successfully saved to storage system')
+    } catch (error) {
+      console.error('❌ Failed to save data:', error)
+      // Emergency fallback to localStorage only
+      localStorage.setItem(saveKey, JSON.stringify(dataToSave))
+      console.log('✅ Emergency save to localStorage')
+    }
 
     // Генерирай нов share URL
     const currentUrl = window.location.origin + window.location.pathname
@@ -583,6 +696,7 @@ export default function EmployeeScheduler() {
     setShareUrl(newShareUrl)
     setLastUpdate(Date.now())
 
+    console.log('💾 Save operation completed successfully')
     return dataToSave.dataHash
   }
 
@@ -596,22 +710,42 @@ export default function EmployeeScheduler() {
       setNoteText("")
       setIsAddNoteOpen(false)
       setNotification({ type: "success", message: "Notiz erfolgreich hinzugefügt!" })
+
+      // Automatically save to localStorage after adding day note
+      setTimeout(async () => {
+        await saveDataToStorage()
+      }, 100)
     }
   }
 
   const removeDayNote = (date: string) => {
     setDayNotes((prev) => prev.filter((note) => note.date !== date))
     setNotification({ type: "success", message: "Notiz entfernt!" })
+
+          // Automatically save to localStorage after removing day note
+      setTimeout(async () => {
+        await saveDataToStorage()
+      }, 100)
   }
 
   const removeEmployee = (employeeId: string) => {
     setEmployees((prev) => prev.filter((e) => e.id !== employeeId))
     setAssignments((prev) => prev.filter((a) => a.employeeId !== employeeId))
     setVacations((prev) => prev.filter((v) => v.employeeId !== employeeId))
+
+          // Automatically save to localStorage after removing employee
+      setTimeout(async () => {
+        await saveDataToStorage()
+      }, 100)
   }
 
   const removeVacation = (index: number) => {
     setVacations((prev) => prev.filter((_, i) => i !== index))
+
+          // Automatically save to localStorage after removing vacation
+      setTimeout(async () => {
+        await saveDataToStorage()
+      }, 100)
   }
 
   const navigateMonth = (direction: "prev" | "next") => {
@@ -642,66 +776,167 @@ export default function EmployeeScheduler() {
     }, 100)
   }
 
-  const saveData = () => {
-    const hash = saveDataToStorage()
+  const saveData = async () => {
+    const hash = await saveDataToStorage()
     setNotification({
       type: "success",
-      message: "Plan erfolgreich gespeichert! Neuer Teilen-Link generiert.",
+      message: "Plan erfolgreich gespeichert!",
     })
   }
 
-  const loadData = () => {
+  const loadData = async () => {
     const saveKey = `schedule-${currentDate.getMonth()}-${currentDate.getFullYear()}`
-    const savedData = localStorage.getItem(saveKey)
+    console.log(`🔄 Loading data for key: ${saveKey}`)
+    
+    try {
+      // Try to load from IndexedDB first (primary source)
+      console.log('📊 Attempting to load from IndexedDB...')
+      let savedData = await storageWrapper.getItem(saveKey)
+      
+      if (savedData) {
+        console.log('✅ Data found in IndexedDB, length:', savedData.length)
+        try {
+          const data: ScheduleData = JSON.parse(savedData)
+          console.log('📝 Parsed data from IndexedDB:', {
+            employees: data.employees?.length || 0,
+            assignments: data.assignments?.length || 0,
+            holidays: data.holidays?.length || 0,
+            vacations: data.vacations?.length || 0,
+            monthInfos: data.monthInfos?.length || 0,
+            dayNotes: data.dayNotes?.length || 0
+          })
+          
+          // Set data from IndexedDB (primary source)
+          setEmployees(data.employees || defaultEmployees)
+          setAssignments(data.assignments || dummyAssignments)
+          setHolidays(data.holidays || [])
+          setVacations(data.vacations || [])
+          setMonthInfos(data.monthInfos || [])
+          setDayNotes(data.dayNotes || [])
+          setLastUpdate(data.lastSaved || Date.now())
 
-    if (savedData) {
-      try {
-        const data: ScheduleData = JSON.parse(savedData)
-        setEmployees(data.employees || defaultEmployees)
-        setAssignments(data.assignments || dummyAssignments)
-        setHolidays(data.holidays || [])
-        setVacations(data.vacations || [])
-        setMonthInfos(data.monthInfos || [])
-        setDayNotes(data.dayNotes || [])
-        setLastUpdate(data.lastSaved || Date.now())
+          setNotification({
+            type: "success",
+            message: "Plan erfolgreich geladen!",
+          })
+          return // Exit early, data loaded successfully
+        } catch (error) {
+          console.error('❌ Error parsing IndexedDB data:', error)
+        }
+      }
+      
+      // Fallback to localStorage only if IndexedDB fails completely
+      console.log('⚠️ No data in IndexedDB, trying localStorage fallback...')
+      const localData = localStorage.getItem(saveKey)
+      if (localData) {
+        try {
+          const data: ScheduleData = JSON.parse(localData)
+          console.log('📝 Parsed data from localStorage fallback:', {
+            employees: data.employees?.length || 0,
+            assignments: data.assignments?.length || 0,
+            holidays: data.holidays?.length || 0,
+            vacations: data.vacations?.length || 0,
+            monthInfos: data.monthInfos?.length || 0,
+            dayNotes: data.dayNotes?.length || 0
+          })
+          
+          // Set data from localStorage fallback
+          setEmployees(data.employees || defaultEmployees)
+          setAssignments(data.assignments || dummyAssignments)
+          setHolidays(data.holidays || [])
+          setVacations(data.vacations || [])
+          setMonthInfos(data.monthInfos || [])
+          setDayNotes(data.dayNotes || [])
+          setLastUpdate(data.lastSaved || Date.now())
 
-        setNotification({
-          type: "success",
-          message: "Plan erfolgreich geladen!",
-        })
-      } catch (error) {
-        setNotification({
-          type: "error",
-          message: "Fehler beim Laden der Daten!",
-        })
+          setNotification({
+            type: "success",
+            message: "Plan erfolgreich geladen!",
+          })
+        } catch (error) {
+          console.error('❌ Error parsing localStorage data:', error)
+          setNotification({
+            type: "error",
+            message: "Fehler beim Laden der Daten!",
+          })
+        }
+      } else {
+        console.log('❌ No data found in either storage')
+      }
+    } catch (error) {
+      console.warn('❌ Failed to load from IndexedDB, trying localStorage:', error)
+      // Final fallback to localStorage
+      const localData = localStorage.getItem(saveKey)
+      if (localData) {
+        try {
+          const data: ScheduleData = JSON.parse(localData)
+          setEmployees(data.employees || defaultEmployees)
+          setAssignments(data.assignments || dummyAssignments)
+          setHolidays(data.holidays || [])
+          setVacations(data.vacations || [])
+          setMonthInfos(data.monthInfos || [])
+          setDayNotes(data.dayNotes || [])
+          setLastUpdate(data.lastSaved || Date.now())
+        } catch (error) {
+          console.error('❌ Error parsing localStorage data:', error)
+        }
       }
     }
   }
 
-  const loadDataFromUrl = () => {
+  const loadDataFromUrl = async () => {
     const urlHash = searchParams?.get("hash")
     if (urlHash && isViewOnly) {
       const saveKey = `schedule-${currentDate.getMonth()}-${currentDate.getFullYear()}`
-      const savedData = localStorage.getItem(saveKey)
+      
+      try {
+        // Try to load from IndexedDB first
+        let savedData = await storageWrapper.getItem(saveKey)
+        
+        // Fallback to localStorage if IndexedDB fails
+        if (!savedData) {
+          savedData = localStorage.getItem(saveKey)
+        }
 
-      if (savedData) {
-        try {
-          const data: ScheduleData = JSON.parse(savedData)
-          if (data.dataHash === urlHash) {
-            setEmployees(data.employees || defaultEmployees)
-            setAssignments(data.assignments || dummyAssignments)
-            setHolidays(data.holidays || [])
-            setVacations(data.vacations || [])
-            setMonthInfos(data.monthInfos || [])
-            setDayNotes(data.dayNotes || [])
-            setLastUpdate(data.lastSaved || Date.now())
+        if (savedData) {
+          try {
+            const data: ScheduleData = JSON.parse(savedData)
+            if (data.dataHash === urlHash) {
+              setEmployees(data.employees || defaultEmployees)
+              setAssignments(data.assignments || dummyAssignments)
+              setHolidays(data.holidays || [])
+              setVacations(data.vacations || [])
+              setMonthInfos(data.monthInfos || [])
+              setDayNotes(data.dayNotes || [])
+              setLastUpdate(data.lastSaved || Date.now())
+            }
+          } catch (error) {
+            console.error("Error loading data from URL:", error)
           }
-        } catch (error) {
-          console.error("Error loading data from URL:", error)
+        }
+      } catch (error) {
+        console.warn('Failed to load from IndexedDB, trying localStorage:', error)
+        // Fallback to localStorage
+        const savedData = localStorage.getItem(saveKey)
+        if (savedData) {
+          try {
+            const data: ScheduleData = JSON.parse(savedData)
+            if (data.dataHash === urlHash) {
+              setEmployees(data.employees || defaultEmployees)
+              setAssignments(data.assignments || dummyAssignments)
+              setHolidays(data.holidays || [])
+              setVacations(data.vacations || [])
+              setMonthInfos(data.monthInfos || [])
+              setDayNotes(data.dayNotes || [])
+              setLastUpdate(data.lastSaved || Date.now())
+            }
+          } catch (error) {
+            console.error("Error loading data from URL:", error)
+          }
         }
       }
     } else {
-      loadData()
+      await loadData()
     }
   }
 
@@ -749,9 +984,9 @@ export default function EmployeeScheduler() {
     setDayEmployeeHours({})
   }
 
-  const generateAndOpenShareUrl = () => {
+  const generateAndOpenShareUrl = async () => {
     // Първо запази данните
-    const hash = saveDataToStorage()
+    const hash = await saveDataToStorage()
 
     // След това отвори линка
     setTimeout(() => {
@@ -999,6 +1234,8 @@ export default function EmployeeScheduler() {
             .backend-print-table th, .backend-print-table td { border: 1px solid #000; padding: 4px; text-align: left; font-size: 9px; }
             .backend-print-header { background-color: #f3f4f6 !important; -webkit-print-color-adjust: exact; font-weight: bold; }
             .backend-print-total { background-color: #fef3c7 !important; -webkit-print-color-adjust: exact; font-weight: bold; }
+            .backend-print-vacation { background-color: #fee2e2 !important; -webkit-print-color-adjust: exact; font-weight: bold; border: 2px solid #dc2626 !important; }
+            .backend-print-vacation-cell { background-color: #fef2f2 !important; -webkit-print-color-adjust: exact; font-weight: bold; }
           }
         `}</style>
         <div className="text-center mb-4">
@@ -1007,6 +1244,26 @@ export default function EmployeeScheduler() {
           </h1>
           <p className="text-sm">Detaillierte Arbeitszeiten für Management</p>
         </div>
+
+
+
+        {/* Vacation Summary - Simple List */}
+        {vacations.length > 0 && (
+          <div className="mb-4 p-2 border border-red-300 bg-red-50 rounded">
+            <h3 className="text-sm font-bold text-red-700 mb-2">Urlaubstage:</h3>
+            <div className="text-xs text-red-600">
+              {vacations.map((vacation, index) => {
+                const employee = employees.find((e) => e.id === vacation.employeeId)
+                return (
+                  <div key={index}>
+                    {employee?.name}: {vacation.startDate} - {vacation.endDate}
+                    {vacation.description && ` (${vacation.description})`}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
 
         <table className="backend-print-table">
           <thead>
@@ -1040,9 +1297,23 @@ export default function EmployeeScheduler() {
                   <td>
                     {day.dayName} {day.isHoliday && "(Feiertag)"}
                   </td>
-                  <td>{earlyEmployee ? earlyEmployee.name : "-"}</td>
+                  <td>
+                    {earlyEmployee ? (
+                      <>
+                        {earlyEmployee.name}
+                        {isEmployeeOnVacation(earlyEmployee.id, day.fullDate) && " ✈️"}
+                      </>
+                    ) : "-"}
+                  </td>
                   <td>{earlyHours > 0 ? `${earlyHours}h` : "-"}</td>
-                  <td>{nightEmployee ? nightEmployee.name : "-"}</td>
+                  <td>
+                    {nightEmployee ? (
+                      <>
+                        {nightEmployee.name}
+                        {isEmployeeOnVacation(nightEmployee.id, day.fullDate) && " ✈️"}
+                      </>
+                    ) : "-"}
+                  </td>
                   <td>{nightHours > 0 ? `${nightHours}h` : "-"}</td>
                   <td>{dayNote ? dayNote.note : "-"}</td>
                 </tr>
@@ -1145,6 +1416,8 @@ export default function EmployeeScheduler() {
           .print-employee-indigo { background-color: #e0e7ff !important; color: #4338ca !important; -webkit-print-color-adjust: exact; }
           .print-employee-teal { background-color: #ccfbf1 !important; color: #0f766e !important; -webkit-print-color-adjust: exact; }
           .print-employee-gray { background-color: #f3f4f6 !important; color: #374151 !important; -webkit-print-color-adjust: exact; }
+          .print-vacation-day { background-color: #fee2e2 !important; -webkit-print-color-adjust: exact; border: 2px solid #dc2626 !important; font-weight: bold; }
+          .print-vacation-employee { background-color: #fef2f2 !important; -webkit-print-color-adjust: exact; font-weight: bold; border: 2px solid #dc2626 !important; }
         }
       `}</style>
         <div className="text-center mb-2">
@@ -1155,18 +1428,19 @@ export default function EmployeeScheduler() {
 
         {/* Vacation List for Print */}
         {vacations.length > 0 && (
-          <div className="print-vacation-list">
-            <strong>Urlaub:</strong>
-            {vacations.map((vacation, index) => {
-              const employee = employees.find((e) => e.id === vacation.employeeId)
-              return (
-                <span key={index}>
-                  {employee?.name} ({vacation.startDate}-{vacation.endDate})
-                  {vacation.description && ` - ${vacation.description}`}
-                  {index < vacations.length - 1 && ", "}
-                </span>
-              )
-            })}
+          <div className="print-vacation-list mb-2 p-1 border border-red-300 bg-red-50 rounded">
+            <div className="text-xs font-bold text-red-700 mb-1">Urlaub:</div>
+            <div className="text-xs text-red-600">
+              {vacations.map((vacation, index) => {
+                const employee = employees.find((e) => e.id === vacation.employeeId)
+                return (
+                  <span key={index}>
+                    {employee?.name} ({vacation.startDate}-{vacation.endDate})
+                    {index < vacations.length - 1 && ", "}
+                  </span>
+                )
+              })}
+            </div>
           </div>
         )}
 
@@ -1224,10 +1498,10 @@ export default function EmployeeScheduler() {
                       <td key={`early-${day.date}`} className={day.isHoliday ? "print-holiday" : ""}>
                         {employee ? (
                           <span
-                            className={`${getEmployeePrintClass(employee.color)} ${onVacation ? "print-vacation" : ""} px-1 rounded`}
+                            className={`${getEmployeePrintClass(employee.color)} px-1 rounded`}
                           >
                             {employee.name}
-                            {onVacation && " (U)"}
+                            {onVacation && " ✈️"}
                           </span>
                         ) : (
                           "-"
@@ -1263,10 +1537,10 @@ export default function EmployeeScheduler() {
                       <td key={`night-${day.date}`} className={day.isHoliday ? "print-holiday" : ""}>
                         {employee ? (
                           <span
-                            className={`${getEmployeePrintClass(employee.color)} ${onVacation ? "print-vacation" : ""} px-1 rounded`}
+                            className={`${getEmployeePrintClass(employee.color)} px-1 rounded`}
                           >
                             {employee.name}
-                            {onVacation && " (U)"}
+                            {onVacation && " ✈️"}
                           </span>
                         ) : (
                           "-"
@@ -1307,6 +1581,18 @@ export default function EmployeeScheduler() {
 
   return (
     <div className={`p-2 sm:p-4 max-w-full mx-auto ${isViewOnly ? "bg-gray-50" : ""}`}>
+      {/* Storage Status */}
+      {storageStatus !== "ready" && (
+        <Alert className="mb-4 border-blue-500 bg-blue-50">
+          <Info className="h-4 w-4 text-blue-600" />
+          <AlertDescription className="text-blue-800">
+            {storageStatus === "migrating" && "🔄 Migrating your data to IndexedDB for better performance..."}
+            {storageStatus === "indexeddb" && "✅ Data migrated to IndexedDB successfully! Better performance and storage capacity."}
+            {storageStatus === "localstorage" && "⚠️ Using localStorage fallback. Some features may be limited."}
+          </AlertDescription>
+        </Alert>
+      )}
+
       {/* Notification */}
       {notification && (
         <Alert
@@ -1360,22 +1646,42 @@ export default function EmployeeScheduler() {
             >
               <span className="text-xs sm:text-sm">↷</span>
             </Button>
-            <Button variant="outline" size={isMobile ? "sm" : "default"} onClick={handlePrint}>
-              <Printer className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-              <span className="text-xs sm:text-sm">Drucken</span>
-            </Button>
+
             <Button variant="outline" size={isMobile ? "sm" : "default"} onClick={handleBackendPrint}>
               <FileText className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
               <span className="text-xs sm:text-sm">Backend</span>
             </Button>
-            <Button variant="outline" size={isMobile ? "sm" : "default"} onClick={exportAsImage}>
+            <Button variant="outline" size={isMobile ? "sm" : "sm"} onClick={exportAsImage}>
               <Camera className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
               <span className="text-xs sm:text-sm">Bild</span>
             </Button>
-            <Button variant="outline" size={isMobile ? "sm" : "default"} onClick={generateAndOpenShareUrl}>
-              <Share className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-              <span className="text-xs sm:text-sm">Teilen</span>
+
+            <Button 
+              variant="outline" 
+              size={isMobile ? "sm" : "sm"} 
+              onClick={async () => {
+                console.log('🧪 Testing save functionality...')
+                try {
+                  const hash = await saveDataToStorage()
+                  console.log('✅ Test save successful! Hash:', hash)
+                  setNotification({
+                    type: "success",
+                    message: "Test save successful! Check console for details."
+                  })
+                } catch (error) {
+                  console.error('❌ Test save failed:', error)
+                  setNotification({
+                    type: "error",
+                    message: "Test save failed! Check console for details."
+                  })
+                }
+              }}
+              title="Test Save Function"
+            >
+              🧪
             </Button>
+
+
             <Dialog open={importDialogOpen} onOpenChange={setImportDialogOpen}>
               <DialogTrigger asChild>
                 <Button variant="outline" size={isMobile ? "sm" : "default"}>
@@ -1634,21 +1940,7 @@ export default function EmployeeScheduler() {
         </div>
       )}
 
-      {shareUrl && !isViewOnly && (
-        <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-          <div className="flex items-start gap-2">
-            <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-            <div className="flex-1">
-              <p className="text-sm font-medium text-green-800">Neuer Teilen-Link generiert!</p>
-              <p className="text-xs text-green-700 mt-1">
-                Dieser Link ist spezifisch für den aktuell gespeicherten Plan:
-              </p>
-              <code className="block mt-2 text-xs bg-white px-2 py-1 rounded break-all border">{shareUrl}</code>
-              <p className="text-xs text-green-600 mt-1">✓ Link wurde automatisch kopiert und in neuem Tab geöffnet</p>
-            </div>
-          </div>
-        </div>
-      )}
+
 
       {/* Current month info display */}
       {currentMonthInfoFrontend && (
@@ -1664,6 +1956,8 @@ export default function EmployeeScheduler() {
           </div>
         </div>
       )}
+
+
 
       {!isViewOnly && (
         <div className="mb-4 print:hidden">
@@ -1935,7 +2229,9 @@ export default function EmployeeScheduler() {
                           return (
                             <td
                               key={`date-${day.date}`}
-                              className={`border border-gray-300 p-1 text-center text-xs font-medium ${day.isHoliday ? "bg-yellow-100" : ""}`}
+                              className={`border border-gray-300 p-1 text-center text-xs font-medium ${
+                                day.isHoliday ? "bg-yellow-100" : ""
+                              }`}
                             >
                               <div className="flex items-center justify-center gap-1">
                                 {day.fullDate}
@@ -1991,7 +2287,9 @@ export default function EmployeeScheduler() {
                           return (
                             <td
                               key={`early-${day.date}`}
-                              className={`border border-gray-300 p-1 relative ${day.isHoliday ? "bg-yellow-100" : ""}`}
+                              className={`border border-gray-300 p-1 relative ${
+                                day.isHoliday ? "bg-yellow-100" : ""
+                              }`}
                             >
                               {isViewOnly ? (
                                 <div
@@ -2127,7 +2425,9 @@ export default function EmployeeScheduler() {
                           return (
                             <td
                               key={`night-${day.date}`}
-                              className={`border border-gray-300 p-1 ${day.isHoliday ? "bg-yellow-100" : ""}`}
+                              className={`border border-gray-300 p-1 ${
+                                day.isHoliday ? "bg-yellow-100" : ""
+                              }`}
                             >
                               {isViewOnly ? (
                                 <div
