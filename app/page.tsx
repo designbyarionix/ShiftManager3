@@ -1129,36 +1129,7 @@ export default function EmployeeScheduler() {
     }, 200)
   }
 
-  // Add data export functionality
-  const exportData = async () => {
-    try {
-      const dataToExport = {
-        employees,
-        assignments,
-        holidays,
-        vacations,
-        monthInfos,
-        dayNotes,
-        month: currentDate.getMonth(),
-        year: currentDate.getFullYear(),
-        exportDate: new Date().toISOString(),
-        version: "1.0"
-      }
-      
-      const dataStr = JSON.stringify(dataToExport, null, 2)
-      const dataBlob = new Blob([dataStr], { type: 'application/json' })
-      
-      const link = document.createElement('a')
-      link.href = URL.createObjectURL(dataBlob)
-      link.download = `shiftmanager-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}.json`
-      link.click()
-      
-      setNotification({ type: "success", message: "Daten erfolgreich exportiert!" })
-    } catch (error) {
-      console.error('Export failed:', error)
-      setNotification({ type: "error", message: "Export fehlgeschlagen!" })
-    }
-  }
+
 
   // Export for Supabase Database - ALL YEAR DATA
   const exportForSupabase = async () => {
@@ -2121,14 +2092,9 @@ ORDER BY total_assignments DESC;
               <span className="text-xs sm:text-sm">Bild</span>
             </Button>
 
-            <Button variant="outline" size={isMobile ? "sm" : "sm"} onClick={exportData}>
-              <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-              <span className="text-xs sm:text-sm">Export</span>
-            </Button>
-
             <Button variant="outline" size={isMobile ? "sm" : "sm"} onClick={exportForSupabase}>
               <Database className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-              <span className="text-xs sm:text-sm">Full Year</span>
+              <span className="text-xs sm:text-sm">Export All Data</span>
             </Button>
 
             <div className="relative">
