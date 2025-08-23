@@ -2,14 +2,15 @@ module.exports = {
   apps: [
     {
       name: 'shiftmanager2',
-      script: 'start.js',
+      script: 'npm',
+      args: 'start',
       cwd: __dirname,
       watch: false,
       instances: 1,
       autorestart: true,
       max_memory_restart: '1G',
       env: {
-        NODE_ENV: 'development',
+        NODE_ENV: 'production',
         PORT: 3001
       },
       error_file: './logs/err.log',

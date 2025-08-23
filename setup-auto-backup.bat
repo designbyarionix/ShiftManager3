@@ -26,3 +26,4 @@ echo If successful, your project will now be backed up every hour.
 echo Check the backup.log file in your project folder for backup history.
 echo.
 pause
+

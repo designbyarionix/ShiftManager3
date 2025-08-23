@@ -1,5 +1,5 @@
 # Auto-Backup Script for ShiftManager2
-# This script automatically commits and pushes changes to GitHub every hour
+# This script automatically creates new branches and pushes changes to GitHub every hour
 # Run this script with Windows Task Scheduler for automated backups
 
 param(
@@ -68,19 +68,17 @@ function Start-AutoBackup {
     # Check if there are changes to commit
     if (Test-GitClean) {
         Write-ColorOutput "No changes to commit - repository is clean" "Yellow"
-        
-        # Still push to ensure remote is up to date
-        Write-ColorOutput "Pushing to ensure remote is up to date..." "Cyan"
-        git push origin main 2>$null
-        
-        if ($LASTEXITCODE -eq 0) {
-            Write-ColorOutput "Push successful - remote is up to date" "Green"
-        } else {
-            Write-ColorOutput "Push failed, but no changes to lose" "Yellow"
-        }
-        
         return
     }
+    
+    # Get current branch name
+    $currentBranch = git branch --show-current 2>$null
+    Write-ColorOutput "Current branch: $currentBranch" "Cyan"
+    
+    # Create timestamped branch name
+    $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm"
+    $branchName = "backup-$timestamp"
+    Write-ColorOutput "Creating new backup branch: $branchName" "Cyan"
     
     # Add all changes
     Write-ColorOutput "Adding all changes to Git..." "Cyan"
@@ -91,8 +89,17 @@ function Start-AutoBackup {
         exit 1
     }
     
-    # Commit changes
-    Write-ColorOutput "Committing changes..." "Cyan"
+    # Create and switch to new branch
+    Write-ColorOutput "Creating new branch..." "Cyan"
+    git checkout -b $branchName 2>$null
+    
+    if ($LASTEXITCODE -ne 0) {
+        Write-ColorOutput "Failed to create new branch!" "Red"
+        exit 1
+    }
+    
+    # Commit changes to the new branch
+    Write-ColorOutput "Committing changes to new branch..." "Cyan"
     git commit -m $CommitMessage 2>$null
     
     if ($LASTEXITCODE -ne 0) {
@@ -100,19 +107,31 @@ function Start-AutoBackup {
         exit 1
     }
     
-    Write-ColorOutput "Changes committed successfully" "Green"
+    Write-ColorOutput "Changes committed successfully to branch: $branchName" "Green"
     
-    # Push to remote
-    Write-ColorOutput "Pushing to GitHub..." "Cyan"
-    git push origin main 2>$null
+    # Push new branch to remote
+    Write-ColorOutput "Pushing new branch to GitHub..." "Cyan"
+    git push -u origin $branchName 2>$null
+    
+    if ($LASTEXITCODE -ne 0) {
+        Write-ColorOutput "Failed to push new branch to GitHub!" "Red"
+        exit 1
+    }
+    
+    Write-ColorOutput "New branch pushed successfully!" "Green"
+    
+    # Switch back to original branch
+    Write-ColorOutput "Switching back to original branch: $currentBranch" "Cyan"
+    git checkout $currentBranch 2>$null
     
     if ($LASTEXITCODE -eq 0) {
         Write-ColorOutput "Backup completed successfully!" "Green"
         Write-ColorOutput "Backup time: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" "Cyan"
+        Write-ColorOutput "New backup branch: $branchName" "Cyan"
         Write-ColorOutput "Repository: https://github.com/designbyarionix/ShiftManager3" "Cyan"
     } else {
-        Write-ColorOutput "Failed to push to GitHub!" "Red"
-        exit 1
+        Write-ColorOutput "Warning: Failed to switch back to original branch!" "Yellow"
+        Write-ColorOutput "You are currently on branch: $branchName" "Yellow"
     }
 }
 

@@ -18,3 +18,4 @@ pm2 save
 Write-Host "✅ ShiftManager2 should now be running on http://localhost:3000" -ForegroundColor Green
 Write-Host "📊 Use 'pm2 status' to check status" -ForegroundColor Cyan
 Write-Host "📝 Use 'pm2 logs shiftmanager2' to view logs" -ForegroundColor Cyan
+

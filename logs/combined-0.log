@@ -985,252 +985,153 @@ Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
 2025-08-22T23:48:40: ✓ Compiled in 724ms (439 modules)
 2025-08-22T23:48:43: ✓ Compiled in 901ms (439 modules)
 2025-08-22T23:48:44: ✓ Compiled in 665ms (439 modules)
-2025-08-22T23:48:51: ✓ Compiled in 825ms (439 modules)
-2025-08-22T23:48:54: ✓ Compiled in 1296ms (439 modules)
-2025-08-22T23:48:55: ✓ Compiled in 813ms (439 modules)
-2025-08-22T23:48:58: ✓ Compiled in 814ms (439 modules)
-2025-08-22T23:49:04: ✓ Compiled in 480ms (439 modules)
-2025-08-22T23:49:18: ✓ Compiled in 869ms (439 modules)
-2025-08-22T23:49:20: ✓ Compiled in 852ms (439 modules)
-2025-08-22T23:49:37: ✓ Compiled in 670ms (439 modules)
-2025-08-22T23:49:38: ✓ Compiled in 1196ms (439 modules)
-2025-08-22T23:50:52: ✓ Compiled in 1487ms (439 modules)
-2025-08-22T23:50:53: ✓ Compiled in 919ms (439 modules)
-2025-08-22T23:51:08: ✓ Compiled in 840ms (439 modules)
-2025-08-22T23:51:46: ✓ Compiled in 3.8s (904 modules)
-2025-08-22T23:51:59: ✓ Compiled in 2.3s (904 modules)
-2025-08-22T23:52:14: ✓ Compiled in 2.4s (904 modules)
-2025-08-22T23:52:26: ✓ Compiled in 3s (904 modules)
-2025-08-22T23:52:36: ✓ Compiled in 2.3s (904 modules)
-2025-08-22T23:52:46: ✓ Compiled in 886ms (439 modules)
-2025-08-22T23:52:47: ✓ Compiled in 757ms (439 modules)
-2025-08-22T23:52:49: ✓ Compiled in 917ms (439 modules)
-2025-08-22T23:52:50: ✓ Compiled in 927ms (439 modules)
-2025-08-22T23:52:59: ⨯ ./app/page.tsx
-Error:   [31mx[0m Unexpected token `div`. Expected jsx identifier
-      ,-[[36;1;4mC:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\app\page.tsx[0m:1229:1]
- [2m1226[0m |     const totalHours = employees.reduce((total, emp) => total + calculateEmployeeHours(emp.id), 0)
- [2m1227[0m | 
- [2m1228[0m |     return (
- [2m1229[0m |       <div className="print:block hidden">
-      : [35;1m       ^^^[0m
- [2m1230[0m |         <style jsx global>{`
- [2m1231[0m |           @media print {
- [2m1232[0m |             * { page-break-inside: avoid !important; }
-      `----
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
 
-Caused by:
-    Syntax Error
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
 
-Import trace for requested module:
-./app/page.tsx
-2025-08-22T23:53:12: ✓ Compiled in 3.2s (890 modules)
-2025-08-22T23:53:30: ✓ Compiled in 794ms (439 modules)
-2025-08-22T23:53:31: ✓ Compiled in 953ms (439 modules)
-2025-08-22T23:53:33: ✓ Compiled in 1097ms (439 modules)
-2025-08-22T23:53:55: ✓ Compiled in 2.7s (904 modules)
-2025-08-22T23:55:49: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-22T23:55:49: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-22T23:55:50: Each child in a list should have a unique "key" prop.
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
 
-Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
-2025-08-22T23:55:51: GET / 200 in 2515ms
-2025-08-22T23:56:06: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
- ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-22T23:56:07: Each child in a list should have a unique "key" prop.
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
 
-Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
-2025-08-22T23:56:07: GET / 200 in 1867ms
-2025-08-22T23:56:22: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
- ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-22T23:56:23: Each child in a list should have a unique "key" prop.
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
 
-Check the render method of `EmployeeScheduler`. See https://react.dev/link/warning-keys for more information.
-2025-08-22T23:56:26: GET / 200 in 3657ms
-2025-08-22T23:58:21: ✓ Compiled in 1213ms (439 modules)
-2025-08-22T23:58:22: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-22T23:58:22: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-22T23:58:22: GET / 200 in 35ms
-2025-08-22T23:58:24: ✓ Compiled in 720ms (439 modules)
-2025-08-22T23:58:25: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-22T23:58:25: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-22T23:58:25: GET / 200 in 29ms
-2025-08-23T00:00:01: ✓ Compiled in 2.4s (439 modules)
-2025-08-23T00:00:01: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:00:01: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:00:01: GET / 200 in 35ms
-2025-08-23T00:00:06: ✓ Compiled in 598ms (439 modules)
-2025-08-23T00:00:07: ✓ Compiled in 529ms (439 modules)
-2025-08-23T00:00:09: ✓ Compiled in 517ms (439 modules)
-2025-08-23T00:00:10: ✓ Compiled in 636ms (439 modules)
-2025-08-23T00:00:14: ✓ Compiled in 737ms (439 modules)
-2025-08-23T00:00:51: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:00:51: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:00:51: GET / 200 in 42ms
-2025-08-23T00:01:00: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:00: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:00: GET / 200 in 27ms
-2025-08-23T00:01:01: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:01: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:01: GET / 200 in 37ms
-2025-08-23T00:01:01: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:01: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:01: GET / 200 in 26ms
-2025-08-23T00:01:01: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
- ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:01: GET / 200 in 27ms
-2025-08-23T00:01:26: ✓ Compiled in 2s (439 modules)
-2025-08-23T00:01:27: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:27: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:27: ✓ Compiled in 1125ms (439 modules)
-2025-08-23T00:01:27: GET / 200 in 492ms
-2025-08-23T00:01:28: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:28: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:28: ✓ Compiled in 758ms (439 modules)
-2025-08-23T00:01:28: GET / 200 in 230ms
-2025-08-23T00:01:29: ✓ Compiled in 716ms (439 modules)
-2025-08-23T00:01:29: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:29: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:29: GET / 200 in 30ms
-2025-08-23T00:01:29: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:29: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:29: GET / 200 in 27ms
-2025-08-23T00:01:35: ✓ Compiled in 869ms (439 modules)
-2025-08-23T00:01:36: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:36: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:36: ✓ Compiled in 1175ms (439 modules)
-2025-08-23T00:01:36: GET / 200 in 1146ms
-2025-08-23T00:01:37: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:37: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:37: GET / 200 in 31ms
-2025-08-23T00:01:44: ✓ Compiled in 994ms (439 modules)
-2025-08-23T00:01:44: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:44: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:01:44: GET / 200 in 31ms
-2025-08-23T00:01:44: ✓ Compiled in 520ms (439 modules)
-2025-08-23T00:01:49: ✓ Compiled in 624ms (439 modules)
-2025-08-23T00:02:11: ✓ Compiled in 8.7s (904 modules)
-2025-08-23T00:02:13: ✓ Compiled in 1034ms (439 modules)
-2025-08-23T00:02:16: ✓ Compiled in 877ms (439 modules)
-2025-08-23T00:02:26: ✓ Compiled in 2.5s (904 modules)
-2025-08-23T00:02:31: ✓ Compiled in 757ms (439 modules)
-2025-08-23T00:02:34: ✓ Compiled in 837ms (439 modules)
-2025-08-23T00:02:36: ✓ Compiled in 728ms (439 modules)
-2025-08-23T00:02:39: ✓ Compiled in 1934ms (439 modules)
-2025-08-23T00:02:41: ✓ Compiled in 604ms (439 modules)
-2025-08-23T00:02:56: ✓ Compiled in 5.2s (904 modules)
-2025-08-23T00:03:16: ✓ Compiled in 4.5s (904 modules)
-2025-08-23T00:03:33: ✓ Compiled in 568ms (439 modules)
-2025-08-23T00:04:05: ✓ Compiled in 3.2s (904 modules)
-2025-08-23T00:04:18: ✓ Compiled in 3.1s (904 modules)
-2025-08-23T00:04:36: ✓ Compiled in 2.3s (904 modules)
-2025-08-23T00:04:43: ✓ Compiled in 967ms (439 modules)
-2025-08-23T00:04:44: ✓ Compiled in 848ms (439 modules)
-2025-08-23T00:04:45: ✓ Compiled in 510ms (439 modules)
-2025-08-23T00:04:49: ✓ Compiled in 975ms (439 modules)
-2025-08-23T00:04:50: ✓ Compiled in 583ms (439 modules)
-2025-08-23T00:04:59: ✓ Compiled in 774ms (439 modules)
-2025-08-23T00:05:01: ✓ Compiled in 572ms (439 modules)
-2025-08-23T00:05:12: ✓ Compiled in 3s (904 modules)
-2025-08-23T00:08:03: ✓ Compiled in 916ms (439 modules)
-2025-08-23T00:12:55: ✓ Compiled in 1468ms (439 modules)
-2025-08-23T00:13:50: ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-2025-08-23T00:13:50: ✓ Compiled in 12.3s (746 modules)
-2025-08-23T00:13:50: ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:13:50: ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-2025-08-23T00:13:51: GET / 200 in 1390ms
-2025-08-23T00:14:01: ✓ Compiled in 9.6s (332 modules)
-2025-08-23T00:14:03: ✓ Compiled in 1983ms (332 modules)
-2025-08-23T00:14:20: ✓ Compiled in 3.8s (746 modules)
-2025-08-23T00:14:21: ✓ Compiled in 1277ms (332 modules)
-2025-08-23T00:14:27: ✓ Compiled in 1296ms (332 modules)
-2025-08-23T00:15:02: ✓ Compiled in 1816ms (332 modules)
-2025-08-23T00:15:07: ✓ Compiled in 1500ms (332 modules)
-2025-08-23T00:15:15: ✓ Compiled in 1986ms (332 modules)
-2025-08-23T00:15:25: ✓ Compiled in 2.1s (332 modules)
-2025-08-23T00:15:30: ✓ Compiled in 4.3s (746 modules)
-2025-08-23T00:15:40: ✓ Compiled in 3.5s (746 modules)
-2025-08-23T00:15:43: ✓ Compiled in 2.6s (746 modules)
-2025-08-23T00:15:53: ✓ Compiled in 1753ms (332 modules)
-2025-08-23T00:15:55: ✓ Compiled in 1635ms (332 modules)
-2025-08-23T00:16:33: ✓ Compiled in 1632ms (332 modules)
-2025-08-23T00:16:38: ✓ Compiled in 1732ms (332 modules)
-2025-08-23T00:16:46: ✓ Compiled in 3.2s (746 modules)
-2025-08-23T00:16:51: ✓ Compiled in 1399ms (332 modules)
-2025-08-23T00:17:13: ✓ Compiled in 1798ms (332 modules)
-2025-08-23T00:17:21: ✓ Compiled in 2.1s (332 modules)
-2025-08-23T00:17:34: ✓ Compiled in 1404ms (332 modules)
-2025-08-23T00:17:40: ✓ Compiled in 1538ms (332 modules)
-2025-08-23T00:17:48: ✓ Compiled in 1575ms (332 modules)
-2025-08-23T00:17:53: ✓ Compiled in 3.5s (746 modules)
-2025-08-23T00:18:00: ✓ Compiled in 1594ms (332 modules)
-2025-08-23T00:18:10: ✓ Compiled in 1953ms (332 modules)
-2025-08-23T00:18:14: ⨯ ./app/page.tsx
-Error:   [31mx[0m You're importing a component that needs `useEffect`. This React hook only works in a client component. To fix, mark the file (or its parent) with the `"use client"` directive.
-  [31m|[0m 
-  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-  [31m|[0m 
-  [31m|[0m 
-   ,-[[36;1;4mC:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\app\page.tsx[0m:1:1]
- [2m1[0m | import { useEffect } from 'react'
-   : [35;1m         ^^^^^^^^^[0m
- [2m2[0m | import { useRouter } from 'next/navigation'
- [2m3[0m | 
- [2m4[0m | export default function HomePage() {
-   `----
-  [31mx[0m You're importing a component that needs `useRouter`. This React hook only works in a client component. To fix, mark the file (or its parent) with the `"use client"` directive.
-  [31m|[0m 
-  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-  [31m|[0m 
-  [31m|[0m 
-   ,-[[36;1;4mC:\Users\arion\OneDrive\Документи\GitHubs\shiftmanager2\app\page.tsx[0m:2:1]
- [2m1[0m | import { useEffect } from 'react'
- [2m2[0m | import { useRouter } from 'next/navigation'
-   : [35;1m         ^^^^^^^^^[0m
- [2m3[0m | 
- [2m4[0m | export default function HomePage() {
- [2m5[0m |   const router = useRouter()
-   `----
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
 
-Import trace for requested module:
-./app/page.tsx
-2025-08-23T00:18:19: ✓ Compiled in 1026ms (312 modules)
-2025-08-23T00:18:24: ✓ Compiled in 1480ms (312 modules)
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
+C:\PROGRAM FILES\NODEJS\NPM.CMD:1
+:: Created by npm, please don't edit manually.
+^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1486:18)
+    at Module._compile (node:internal/modules/cjs/loader:1528:20)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\once.js:12:16)
+    at next (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\waterfall.js:96:20)
+    at C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (C:\Users\arion\AppData\Roaming\npm\node_modules\pm2\lib\Utility.js:186:13)
