@@ -1160,88 +1160,145 @@ export default function EmployeeScheduler() {
     }
   }
 
-  // Export for Supabase Database
+  // Export for Supabase Database - ALL YEAR DATA
   const exportForSupabase = async () => {
     try {
+      const currentYear = currentDate.getFullYear()
+      
+      // Collect ALL data from localStorage for the entire year
+      const allYearData: {
+        employees: any[];
+        assignments: any[];
+        holidays: any[];
+        vacations: any[];
+        month_infos: any[];
+        day_notes: any[];
+      } = {
+        employees: [],
+        assignments: [],
+        holidays: [],
+        vacations: [],
+        month_infos: [],
+        day_notes: []
+      }
+      
+      // Get all employees (they're the same across all months)
+      allYearData.employees = employees.map(emp => ({
+        id: emp.id,
+        name: emp.name,
+        color: emp.color,
+        custom_hours: emp.customHours || {},
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      }))
+      
+      // Collect data from ALL months (0-11)
+      for (let month = 0; month < 12; month++) {
+        const monthKey = `schedule-${month}-${currentYear}`
+        const monthData = localStorage.getItem(monthKey)
+        
+        if (monthData) {
+          try {
+            const parsedData = JSON.parse(monthData)
+            
+            // Add assignments for this month
+            if (parsedData.assignments) {
+              parsedData.assignments.forEach((assignment: any) => {
+                allYearData.assignments.push({
+                  id: `${assignment.date}-${assignment.shift}-${month}-${currentYear}`,
+                  date: assignment.date,
+                  shift: assignment.shift,
+                  employee_id: assignment.employeeId,
+                  month: month,
+                  year: currentYear,
+                  created_at: new Date().toISOString(),
+                  updated_at: new Date().toISOString()
+                })
+              })
+            }
+            
+            // Add holidays for this month
+            if (parsedData.holidays) {
+              parsedData.holidays.forEach((holiday: any) => {
+                allYearData.holidays.push({
+                  id: `${holiday.date}-${month}-${currentYear}`,
+                  date: holiday.date,
+                  name: holiday.name || 'Holiday',
+                  month: month,
+                  year: currentYear,
+                  created_at: new Date().toISOString(),
+                  updated_at: new Date().toISOString()
+                })
+              })
+            }
+            
+            // Add vacations for this month
+            if (parsedData.vacations) {
+              parsedData.vacations.forEach((vacation: any) => {
+                allYearData.vacations.push({
+                  id: `${vacation.employeeId}-${vacation.startDate}-${vacation.endDate}-${month}-${currentYear}`,
+                  employee_id: vacation.employeeId,
+                  start_date: vacation.startDate,
+                  end_date: vacation.endDate,
+                  description: vacation.description || '',
+                  month: month,
+                  year: currentYear,
+                  created_at: new Date().toISOString(),
+                  updated_at: new Date().toISOString()
+                })
+              })
+            }
+            
+            // Add month infos for this month
+            if (parsedData.monthInfos) {
+              parsedData.monthInfos.forEach((info: any) => {
+                allYearData.month_infos.push({
+                  id: `${info.month}-${currentYear}-${info.type}`,
+                  month: info.month,
+                  year: currentYear,
+                  info: info.info,
+                  type: info.type,
+                  created_at: new Date().toISOString(),
+                  updated_at: new Date().toISOString()
+                })
+              })
+            }
+            
+            // Add day notes for this month
+            if (parsedData.dayNotes) {
+              parsedData.dayNotes.forEach((note: any) => {
+                allYearData.day_notes.push({
+                  id: `${note.date}-${month}-${currentYear}`,
+                  date: note.date,
+                  note: note.note,
+                  month: month,
+                  year: currentYear,
+                  created_at: new Date().toISOString(),
+                  updated_at: new Date().toISOString()
+                })
+              })
+            }
+          } catch (parseError) {
+            console.warn(`Failed to parse data for month ${month}:`, parseError)
+          }
+        }
+      }
+      
       // Create Supabase-ready data structure
       const supabaseData = {
-        // Employees table
-        employees: employees.map(emp => ({
-          id: emp.id,
-          name: emp.name,
-          color: emp.color,
-          custom_hours: emp.customHours || {},
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        })),
-        
-        // Assignments table
-        assignments: assignments.map(assignment => ({
-          id: `${assignment.date}-${assignment.shift}`,
-          date: assignment.date,
-          shift: assignment.shift,
-          employee_id: assignment.employeeId,
-          month: currentDate.getMonth(),
-          year: currentDate.getFullYear(),
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        })),
-        
-        // Holidays table
-        holidays: holidays.map(holiday => ({
-          id: holiday.date,
-          date: holiday.date,
-          name: holiday.name || 'Holiday',
-          month: currentDate.getMonth(),
-          year: currentDate.getFullYear(),
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        })),
-        
-        // Vacations table
-        vacations: vacations.map(vacation => ({
-          id: `${vacation.employeeId}-${vacation.startDate}-${vacation.endDate}`,
-          employee_id: vacation.employeeId,
-          start_date: vacation.startDate,
-          end_date: vacation.endDate,
-          description: vacation.description || '',
-          month: currentDate.getMonth(),
-          year: currentDate.getFullYear(),
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        })),
-        
-        // Month info table
-        month_infos: monthInfos.map(info => ({
-          id: `${info.month}-${info.year}-${info.type}`,
-          month: info.month,
-          year: info.year,
-          info: info.info,
-          type: info.type,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        })),
-        
-        // Day notes table
-        day_notes: dayNotes.map(note => ({
-          id: note.date,
-          date: note.date,
-          note: note.note,
-          month: currentDate.getMonth(),
-          year: currentDate.getFullYear(),
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        })),
+        ...allYearData,
         
         // Metadata
         metadata: {
           export_date: new Date().toISOString(),
-          month: currentDate.getMonth(),
-          year: currentDate.getFullYear(),
-          total_employees: employees.length,
-          total_assignments: assignments.length,
-          total_holidays: holidays.length,
-          total_vacations: vacations.length,
+          year: currentYear,
+          total_employees: allYearData.employees.length,
+          total_assignments: allYearData.assignments.length,
+          total_holidays: allYearData.holidays.length,
+          total_vacations: allYearData.vacations.length,
+          total_month_infos: allYearData.month_infos.length,
+          total_day_notes: allYearData.day_notes.length,
+          months_with_data: allYearData.assignments.length > 0 ? 'Full year data' : 'Current month only',
           version: "1.0"
         }
       }
@@ -1274,22 +1331,25 @@ export default function EmployeeScheduler() {
     }
   }
 
-  // Generate SQL insert statements for Supabase
+  // Generate SQL insert statements for Supabase - FULL YEAR
   const generateSupabaseSQL = (data: any) => {
-    let sql = `-- Supabase Database Import Script
+    const currentYear = currentDate.getFullYear()
+    
+    let sql = `-- Supabase Database Import Script - FULL YEAR DATA
 -- Generated on: ${new Date().toISOString()}
--- Month: ${currentDate.getMonth() + 1}, Year: ${currentDate.getFullYear()}
+-- Year: ${currentYear}
+-- Total Records: ${data.total_employees} employees, ${data.total_assignments} assignments, ${data.total_holidays} holidays, ${data.total_vacations} vacations
 
 -- Enable UUID extension if not exists
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Clear existing data (optional - comment out if you want to keep existing data)
--- DELETE FROM day_notes WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
--- DELETE FROM month_infos WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
--- DELETE FROM vacations WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
--- DELETE FROM holidays WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
--- DELETE FROM assignments WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
--- DELETE FROM employees WHERE id IN (SELECT DISTINCT employee_id FROM assignments WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()});
+-- Clear existing data for the year (optional - comment out if you want to keep existing data)
+-- DELETE FROM day_notes WHERE year = ${currentYear};
+-- DELETE FROM month_infos WHERE year = ${currentYear};
+-- DELETE FROM vacations WHERE year = ${currentYear};
+-- DELETE FROM holidays WHERE year = ${currentYear};
+-- DELETE FROM assignments WHERE year = ${currentYear};
+-- DELETE FROM employees WHERE id IN (SELECT DISTINCT employee_id FROM assignments WHERE year = ${currentYear});
 
 -- Insert Employees
 INSERT INTO employees (id, name, color, custom_hours, created_at, updated_at) VALUES
@@ -1349,13 +1409,34 @@ ON CONFLICT (id) DO UPDATE SET
   note = EXCLUDED.note,
   updated_at = EXCLUDED.updated_at;
 
--- Verification queries
-SELECT 'Employees imported:' as info, COUNT(*) as count FROM employees WHERE id IN (SELECT DISTINCT employee_id FROM assignments WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()});
-SELECT 'Assignments imported:' as info, COUNT(*) as count FROM assignments WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
-SELECT 'Holidays imported:' as info, COUNT(*) as count FROM holidays WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
-SELECT 'Vacations imported:' as info, COUNT(*) as count FROM vacations WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
-SELECT 'Month infos imported:' as info, COUNT(*) as count FROM month_infos WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
-SELECT 'Day notes imported:' as info, COUNT(*) as count FROM day_notes WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+-- Verification queries for the entire year
+SELECT 'Employees imported:' as info, COUNT(*) as count FROM employees WHERE id IN (SELECT DISTINCT employee_id FROM assignments WHERE year = ${currentYear});
+SELECT 'Assignments imported:' as info, COUNT(*) as count FROM assignments WHERE year = ${currentYear};
+SELECT 'Holidays imported:' as info, COUNT(*) as count FROM holidays WHERE year = ${currentYear};
+SELECT 'Vacations imported:' as info, COUNT(*) as count FROM vacations WHERE year = ${currentYear};
+SELECT 'Month infos imported:' as info, COUNT(*) as count FROM month_infos WHERE year = ${currentYear};
+SELECT 'Day notes imported:' as info, COUNT(*) as count FROM day_notes WHERE year = ${currentYear};
+
+-- Monthly breakdown
+SELECT 
+  month,
+  COUNT(*) as assignments_count,
+  COUNT(DISTINCT employee_id) as active_employees
+FROM assignments 
+WHERE year = ${currentYear}
+GROUP BY month 
+ORDER BY month;
+
+-- Employee workload summary
+SELECT 
+  e.name,
+  COUNT(a.id) as total_assignments,
+  COUNT(CASE WHEN a.shift = 'early' THEN 1 END) as early_shifts,
+  COUNT(CASE WHEN a.shift = 'night' THEN 1 END) as night_shifts
+FROM employees e
+LEFT JOIN assignments a ON e.id = a.employee_id AND a.year = ${currentYear}
+GROUP BY e.id, e.name
+ORDER BY total_assignments DESC;
 `;
 
     return sql;
@@ -2047,7 +2128,7 @@ SELECT 'Day notes imported:' as info, COUNT(*) as count FROM day_notes WHERE mon
 
             <Button variant="outline" size={isMobile ? "sm" : "sm"} onClick={exportForSupabase}>
               <Database className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-              <span className="text-xs sm:text-sm">Supabase</span>
+              <span className="text-xs sm:text-sm">Full Year</span>
             </Button>
 
             <div className="relative">
