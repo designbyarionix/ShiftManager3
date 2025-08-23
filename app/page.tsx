@@ -28,6 +28,7 @@ import {
   AlertCircle,
   Clock,
   Upload,
+  Database,
 } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import html2canvas from "html2canvas"
@@ -1159,6 +1160,207 @@ export default function EmployeeScheduler() {
     }
   }
 
+  // Export for Supabase Database
+  const exportForSupabase = async () => {
+    try {
+      // Create Supabase-ready data structure
+      const supabaseData = {
+        // Employees table
+        employees: employees.map(emp => ({
+          id: emp.id,
+          name: emp.name,
+          color: emp.color,
+          custom_hours: emp.customHours || {},
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        })),
+        
+        // Assignments table
+        assignments: assignments.map(assignment => ({
+          id: `${assignment.date}-${assignment.shift}`,
+          date: assignment.date,
+          shift: assignment.shift,
+          employee_id: assignment.employeeId,
+          month: currentDate.getMonth(),
+          year: currentDate.getFullYear(),
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        })),
+        
+        // Holidays table
+        holidays: holidays.map(holiday => ({
+          id: holiday.date,
+          date: holiday.date,
+          name: holiday.name || 'Holiday',
+          month: currentDate.getMonth(),
+          year: currentDate.getFullYear(),
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        })),
+        
+        // Vacations table
+        vacations: vacations.map(vacation => ({
+          id: `${vacation.employeeId}-${vacation.startDate}-${vacation.endDate}`,
+          employee_id: vacation.employeeId,
+          start_date: vacation.startDate,
+          end_date: vacation.endDate,
+          description: vacation.description || '',
+          month: currentDate.getMonth(),
+          year: currentDate.getFullYear(),
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        })),
+        
+        // Month info table
+        month_infos: monthInfos.map(info => ({
+          id: `${info.month}-${info.year}-${info.type}`,
+          month: info.month,
+          year: info.year,
+          info: info.info,
+          type: info.type,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        })),
+        
+        // Day notes table
+        day_notes: dayNotes.map(note => ({
+          id: note.date,
+          date: note.date,
+          note: note.note,
+          month: currentDate.getMonth(),
+          year: currentDate.getFullYear(),
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        })),
+        
+        // Metadata
+        metadata: {
+          export_date: new Date().toISOString(),
+          month: currentDate.getMonth(),
+          year: currentDate.getFullYear(),
+          total_employees: employees.length,
+          total_assignments: assignments.length,
+          total_holidays: holidays.length,
+          total_vacations: vacations.length,
+          version: "1.0"
+        }
+      }
+      
+      // Export as JSON
+      const dataStr = JSON.stringify(supabaseData, null, 2)
+      const dataBlob = new Blob([dataStr], { type: 'application/json' })
+      
+      const link = document.createElement('a')
+      link.href = URL.createObjectURL(dataBlob)
+      link.download = `supabase-export-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}.json`
+      link.click()
+      
+      // Also create SQL insert statements
+      const sqlStatements = generateSupabaseSQL(supabaseData)
+      const sqlBlob = new Blob([sqlStatements], { type: 'text/plain' })
+      
+      const sqlLink = document.createElement('a')
+      sqlLink.href = URL.createObjectURL(sqlBlob)
+      sqlLink.download = `supabase-sql-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}.sql`
+      sqlLink.click()
+      
+      setNotification({ 
+        type: "success", 
+        message: "Supabase Export erfolgreich! JSON und SQL Dateien heruntergeladen." 
+      })
+    } catch (error) {
+      console.error('Supabase export failed:', error)
+      setNotification({ type: "error", message: "Supabase Export fehlgeschlagen!" })
+    }
+  }
+
+  // Generate SQL insert statements for Supabase
+  const generateSupabaseSQL = (data: any) => {
+    let sql = `-- Supabase Database Import Script
+-- Generated on: ${new Date().toISOString()}
+-- Month: ${currentDate.getMonth() + 1}, Year: ${currentDate.getFullYear()}
+
+-- Enable UUID extension if not exists
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- Clear existing data (optional - comment out if you want to keep existing data)
+-- DELETE FROM day_notes WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+-- DELETE FROM month_infos WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+-- DELETE FROM vacations WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+-- DELETE FROM holidays WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+-- DELETE FROM assignments WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+-- DELETE FROM employees WHERE id IN (SELECT DISTINCT employee_id FROM assignments WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()});
+
+-- Insert Employees
+INSERT INTO employees (id, name, color, custom_hours, created_at, updated_at) VALUES
+${data.employees.map(emp => 
+  `('${emp.id}', '${emp.name}', '${emp.color}', '${JSON.stringify(emp.custom_hours)}', '${emp.created_at}', '${emp.updated_at}')`
+).join(',\n')}
+ON CONFLICT (id) DO UPDATE SET
+  name = EXCLUDED.name,
+  color = EXCLUDED.color,
+  custom_hours = EXCLUDED.custom_hours,
+  updated_at = EXCLUDED.updated_at;
+
+-- Insert Assignments
+INSERT INTO assignments (id, date, shift, employee_id, month, year, created_at, updated_at) VALUES
+${data.assignments.map(assignment => 
+  `('${assignment.id}', '${assignment.date}', '${assignment.shift}', '${assignment.employee_id}', ${assignment.month}, ${assignment.year}, '${assignment.created_at}', '${assignment.updated_at}')`
+).join(',\n')}
+ON CONFLICT (id) DO UPDATE SET
+  employee_id = EXCLUDED.employee_id,
+  updated_at = EXCLUDED.updated_at;
+
+-- Insert Holidays
+INSERT INTO holidays (id, date, name, month, year, created_at, updated_at) VALUES
+${data.holidays.map(holiday => 
+  `('${holiday.id}', '${holiday.date}', '${holiday.name}', ${holiday.month}, ${holiday.year}, '${holiday.created_at}', '${holiday.updated_at}')`
+).join(',\n')}
+ON CONFLICT (id) DO UPDATE SET
+  name = EXCLUDED.name,
+  updated_at = EXCLUDED.updated_at;
+
+-- Insert Vacations
+INSERT INTO vacations (id, employee_id, start_date, end_date, description, month, year, created_at, updated_at) VALUES
+${data.vacations.map(vacation => 
+  `('${vacation.id}', '${vacation.employee_id}', '${vacation.start_date}', '${vacation.end_date}', '${vacation.description}', ${vacation.month}, ${vacation.year}, '${vacation.created_at}', '${vacation.updated_at}')`
+).join(',\n')}
+ON CONFLICT (id) DO UPDATE SET
+  start_date = EXCLUDED.start_date,
+  end_date = EXCLUDED.end_date,
+  description = EXCLUDED.description,
+  updated_at = EXCLUDED.updated_at;
+
+-- Insert Month Infos
+INSERT INTO month_infos (id, month, year, info, type, created_at, updated_at) VALUES
+${data.month_infos.map(info => 
+  `('${info.id}', '${info.month}', ${info.year}, '${info.info}', '${info.type}', '${info.created_at}', '${info.updated_at}')`
+).join(',\n')}
+ON CONFLICT (id) DO UPDATE SET
+  info = EXCLUDED.info,
+  updated_at = EXCLUDED.updated_at;
+
+-- Insert Day Notes
+INSERT INTO day_notes (id, date, note, month, year, created_at, updated_at) VALUES
+${data.day_notes.map(note => 
+  `('${note.id}', '${note.date}', '${note.note}', ${note.month}, ${note.year}, '${note.created_at}', '${note.updated_at}')`
+).join(',\n')}
+ON CONFLICT (id) DO UPDATE SET
+  note = EXCLUDED.note,
+  updated_at = EXCLUDED.updated_at;
+
+-- Verification queries
+SELECT 'Employees imported:' as info, COUNT(*) as count FROM employees WHERE id IN (SELECT DISTINCT employee_id FROM assignments WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()});
+SELECT 'Assignments imported:' as info, COUNT(*) as count FROM assignments WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+SELECT 'Holidays imported:' as info, COUNT(*) as count FROM holidays WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+SELECT 'Vacations imported:' as info, COUNT(*) as count FROM vacations WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+SELECT 'Month infos imported:' as info, COUNT(*) as count FROM month_infos WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+SELECT 'Day notes imported:' as info, COUNT(*) as count FROM day_notes WHERE month = ${currentDate.getMonth()} AND year = ${currentDate.getFullYear()};
+`;
+
+    return sql;
+  }
+
   // Add data import functionality
   const importData = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -1841,6 +2043,11 @@ export default function EmployeeScheduler() {
             <Button variant="outline" size={isMobile ? "sm" : "sm"} onClick={exportData}>
               <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
               <span className="text-xs sm:text-sm">Export</span>
+            </Button>
+
+            <Button variant="outline" size={isMobile ? "sm" : "sm"} onClick={exportForSupabase}>
+              <Database className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+              <span className="text-xs sm:text-sm">Supabase</span>
             </Button>
 
             <div className="relative">
