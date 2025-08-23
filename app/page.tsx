@@ -27,6 +27,7 @@ import {
   CheckCircle,
   AlertCircle,
   Clock,
+  Upload,
 } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import html2canvas from "html2canvas"
@@ -1061,6 +1062,76 @@ export default function EmployeeScheduler() {
     }, 200)
   }
 
+  // Add data export functionality
+  const exportData = async () => {
+    try {
+      const dataToExport = {
+        employees,
+        assignments,
+        holidays,
+        vacations,
+        monthInfos,
+        dayNotes,
+        month: currentDate.getMonth(),
+        year: currentDate.getFullYear(),
+        exportDate: new Date().toISOString(),
+        version: "1.0"
+      }
+      
+      const dataStr = JSON.stringify(dataToExport, null, 2)
+      const dataBlob = new Blob([dataStr], { type: 'application/json' })
+      
+      const link = document.createElement('a')
+      link.href = URL.createObjectURL(dataBlob)
+      link.download = `shiftmanager-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}.json`
+      link.click()
+      
+      setNotification({ type: "success", message: "Daten erfolgreich exportiert!" })
+    } catch (error) {
+      console.error('Export failed:', error)
+      setNotification({ type: "error", message: "Export fehlgeschlagen!" })
+    }
+  }
+
+  // Add data import functionality
+  const importData = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    try {
+      const text = await file.text()
+      const importedData = JSON.parse(text)
+      
+      // Validate imported data
+      if (importedData.assignments && importedData.employees) {
+        // Check if data is for the same month/year
+        if (importedData.month === currentDate.getMonth() && importedData.year === currentDate.getFullYear()) {
+          setEmployees(importedData.employees)
+          setAssignments(importedData.assignments)
+          setHolidays(importedData.holidays || [])
+          setVacations(importedData.vacations || [])
+          setMonthInfos(importedData.monthInfos || [])
+          setDayNotes(importedData.dayNotes || [])
+          
+          // Save imported data to storage
+          await saveDataToStorage()
+          
+          setNotification({ type: "success", message: "Daten erfolgreich importiert und gespeichert!" })
+        } else {
+          setNotification({ type: "error", message: "Importierte Daten sind für einen anderen Monat/Jahr!" })
+        }
+      } else {
+        setNotification({ type: "error", message: "Ungültiges Datenformat!" })
+      }
+    } catch (error) {
+      console.error('Import failed:', error)
+      setNotification({ type: "error", message: "Import fehlgeschlagen!" })
+    }
+    
+    // Reset file input
+    event.target.value = ''
+  }
+
   const updateEmployeeHours = (employeeId: string, newHours: number) => {
     // Това е опростена версия - в реалното приложение трябва да се специфицира дата/смяна
     const employee = employees.find((e) => e.id === employeeId)
@@ -1629,6 +1700,16 @@ export default function EmployeeScheduler() {
         </Alert>
       )}
 
+      {/* Data Persistence Notice */}
+      <Alert className="mb-4 border-orange-500 bg-orange-50">
+        <Info className="h-4 w-4 text-orange-600" />
+        <AlertDescription className="text-orange-800">
+          <strong>💡 Tipp:</strong> Daten werden nur lokal gespeichert. Um zwischen verschiedenen Geräten/Umgebungen zu synchronisieren, 
+          verwenden Sie die <strong>Export</strong> und <strong>Import</strong> Buttons. 
+          Exportieren Sie Ihre Daten nach dem Speichern und importieren Sie sie in der neuen Umgebung.
+        </AlertDescription>
+      </Alert>
+
       {/* Notification */}
       {notification && (
         <Alert
@@ -1691,6 +1772,27 @@ export default function EmployeeScheduler() {
               <Camera className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
               <span className="text-xs sm:text-sm">Bild</span>
             </Button>
+
+            <Button variant="outline" size={isMobile ? "sm" : "sm"} onClick={exportData}>
+              <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+              <span className="text-xs sm:text-sm">Export</span>
+            </Button>
+
+            <div className="relative">
+              <input
+                type="file"
+                accept=".json"
+                onChange={importData}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                id="import-file"
+              />
+              <Button variant="outline" size={isMobile ? "sm" : "sm"} asChild>
+                <label htmlFor="import-file" className="cursor-pointer">
+                  <Upload className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                  <span className="text-xs sm:text-sm">Import</span>
+                </label>
+              </Button>
+            </div>
 
             <Button 
               variant="outline" 
