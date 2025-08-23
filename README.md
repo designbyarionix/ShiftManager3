@@ -89,7 +89,7 @@ shiftmanager2/
 
 ### **Option 1: Development Mode (Manual)**
 ```bash
-pnpm dev
+npm run dev
 ```
 - **Port**: 3001
 - **URL**: http://localhost:3001
@@ -99,6 +99,56 @@ pnpm dev
 ```bash
 # Start with PM2
 pm2 start ecosystem.config.js
+```
+
+## 🔄 **Development Workflow (IMPORTANT!)**
+
+### **GitHub-First Development Process**
+**Always follow this workflow to keep local and GitHub versions in sync:**
+
+1. **Start Every Session:**
+   ```bash
+   git pull origin main
+   git status  # Verify working tree is clean
+   ```
+
+2. **Make Changes:**
+   - Edit files locally
+   - Test changes thoroughly
+   - Ensure no build errors
+
+3. **Commit and Push:**
+   ```bash
+   git add .
+   git commit -m "Descriptive commit message"
+   git push origin main
+   ```
+
+4. **Verify Deployment:**
+   - Check Vercel deployment status
+   - Test live application
+   - Confirm changes are working
+
+### **Why This Workflow?**
+- ✅ **Prevents version conflicts**
+- ✅ **Ensures consistent deployments**
+- ✅ **Maintains clean git history**
+- ✅ **Avoids lost work**
+- ✅ **Keeps Vercel in sync**
+
+### **Before Making Any Changes:**
+- **ALWAYS** pull latest from GitHub first
+- **NEVER** start coding without syncing
+- **ALWAYS** commit and push after changes
+
+---
+
+## 📚 **Additional Documentation**
+
+- **Development Workflow**: [`DEVELOPMENT_WORKFLOW.md`](./DEVELOPMENT_WORKFLOW.md) - **MANDATORY READING**
+- **PM2 Setup**: [`PM2_SETUP.md`](./PM2_SETUP.md)
+- **Storage Migration**: [`STORAGE_MIGRATION.md`](./STORAGE_MIGRATION.md)
+- **Auto Backup**: [`AUTO_BACKUP_README.md`](./AUTO_BACKUP_README.md)
 
 # Save configuration
 pm2 save
