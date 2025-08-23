@@ -230,3 +230,4 @@ Unregister-ScheduledTask -TaskName "ShiftManager2-AutoBackup" -Confirm:$false
 ---
 
 **Your ShiftManager2 project is now protected with automatic hourly backups!** 🛡️✨
+

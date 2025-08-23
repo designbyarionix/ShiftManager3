@@ -401,11 +401,16 @@ export default function EmployeeScheduler() {
   }
 
   const isEmployeeOnVacation = (employeeId: string, date: string) => {
+    console.log(`🔍 Checking vacation for employee ${employeeId} on date ${date}`)
+    console.log(`📅 Current vacations:`, vacations)
+    
     const [day, month] = date.split(".").map(Number)
     const year = currentDate.getFullYear()
     const checkDate = new Date(year, month - 1, day)
+    
+    console.log(`📅 Check date:`, checkDate.toISOString())
 
-    return vacations.some((vacation) => {
+    const result = vacations.some((vacation) => {
       if (vacation.employeeId !== employeeId) return false
 
       const [startDay, startMonth] = vacation.startDate.split(".").map(Number)
@@ -413,9 +418,18 @@ export default function EmployeeScheduler() {
 
       const startDate = new Date(year, startMonth - 1, startDay)
       const endDate = new Date(year, endMonth - 1, endDay)
+      
+      console.log(`📅 Vacation period:`, {
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        isInRange: checkDate >= startDate && checkDate <= endDate
+      })
 
       return checkDate >= startDate && checkDate <= endDate
     })
+    
+    console.log(`✅ Vacation check result for ${employeeId} on ${date}:`, result)
+    return result
   }
 
   const getCurrentMonthInfo = (type: "frontend" | "backend") => {
@@ -563,7 +577,16 @@ export default function EmployeeScheduler() {
         endDate: vacationEnd,
         description: vacationDescription,
       }
-      setVacations((prev) => [...prev, newVacation])
+      
+      console.log('➕ Adding new vacation:', newVacation)
+      console.log('📅 Current vacations before adding:', vacations)
+      
+      setVacations((prev) => {
+        const newVacations = [...prev, newVacation]
+        console.log('📅 New vacations array:', newVacations)
+        return newVacations
+      })
+      
       setVacationEmployee("")
       setVacationStart("")
       setVacationEnd("")
@@ -572,7 +595,9 @@ export default function EmployeeScheduler() {
 
       // Automatically save to localStorage after adding vacation
       setTimeout(async () => {
+        console.log('💾 Auto-saving vacation data...')
         await saveDataToStorage()
+        console.log('✅ Vacation auto-save completed')
       }, 100)
     }
   }
@@ -683,6 +708,10 @@ export default function EmployeeScheduler() {
       lastSaved: Date.now(),
       dataHash: "",
     }
+
+    console.log('💾 Data to save - vacations:', vacations)
+    console.log('💾 Data to save - employees:', currentEmployees)
+    console.log('💾 Data to save - assignments:', assignments)
 
     // Генерирай hash
     dataToSave.dataHash = generateDataHash({
@@ -833,6 +862,9 @@ export default function EmployeeScheduler() {
           setDayNotes(data.dayNotes || [])
           setLastUpdate(data.lastSaved || Date.now())
 
+          console.log('🎯 Set vacations from IndexedDB:', data.vacations || [])
+          console.log('🎯 Set employees from IndexedDB:', data.employees || defaultEmployees)
+
           setNotification({
             type: "success",
             message: "Plan erfolgreich geladen!",
@@ -866,6 +898,9 @@ export default function EmployeeScheduler() {
           setMonthInfos(data.monthInfos || [])
           setDayNotes(data.dayNotes || [])
           setLastUpdate(data.lastSaved || Date.now())
+          
+          console.log('🎯 Set vacations from final localStorage fallback:', data.vacations || [])
+          console.log('🎯 Set employees from final localStorage fallback:', data.employees || defaultEmployees)
 
           setNotification({
             type: "success",
@@ -2224,8 +2259,7 @@ export default function EmployeeScheduler() {
                       <tr key={`early-${weekIndex}`}>
                         <td className="border border-gray-300 p-1 sm:p-2 font-medium bg-gray-50 text-xs">Früh</td>
                         {week.map((day, dayIndex) => {
-                          if (!day)
-                            return <td key={`empty-early-${dayIndex}`} className="border border-gray-300 p-1"></td>
+                          if (!day) return <td key={`empty-early-${dayIndex}`} className="border border-gray-300 p-1"></td>
 
                           const assignment = getAssignment(day.fullDate, "early")
                           const employee = assignment ? employees.find((e) => e.id === assignment.employeeId) : null
@@ -2240,7 +2274,11 @@ export default function EmployeeScheduler() {
                             >
                               {isViewOnly ? (
                                 <div
-                                  className={`text-xs p-1 rounded text-center ${employee ? employee.color : ""} relative`}
+                                  className={`text-xs p-1 rounded text-center ${employee ? employee.color : ""} relative ${
+                                    employee && isEmployeeOnVacation(employee.id, day.fullDate) 
+                                      ? "border-2 border-red-500" 
+                                      : ""
+                                  }`}
                                 >
                                   {employee ? (
                                     <>
@@ -2300,7 +2338,11 @@ export default function EmployeeScheduler() {
                                       }
                                     >
                                       <SelectTrigger
-                                        className={`w-full h-6 sm:h-8 text-xs ${employee ? employee.color : "bg-white"} hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 relative`}
+                                        className={`w-full h-6 sm:h-8 text-xs ${employee ? employee.color : "bg-white"} hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 relative ${
+                                          employee && isEmployeeOnVacation(employee.id, day.fullDate) 
+                                            ? "border-2 border-red-500 ring-red-500" 
+                                            : ""
+                                        }`}
                                         onDoubleClick={() => {
                                           if (employee) {
                                             setEditingHours({
@@ -2378,7 +2420,11 @@ export default function EmployeeScheduler() {
                             >
                               {isViewOnly ? (
                                 <div
-                                  className={`text-xs p-1 rounded text-center ${employee ? employee.color : ""} relative`}
+                                  className={`text-xs p-1 rounded text-center ${employee ? employee.color : ""} relative ${
+                                    employee && isEmployeeOnVacation(employee.id, day.fullDate) 
+                                      ? "border-2 border-red-500" 
+                                      : ""
+                                  }`}
                                 >
                                   {employee ? (
                                     <>
@@ -2438,7 +2484,11 @@ export default function EmployeeScheduler() {
                                       }
                                     >
                                       <SelectTrigger
-                                        className={`w-full h-6 sm:h-8 text-xs ${employee ? employee.color : "bg-white"} hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 relative`}
+                                        className={`w-full h-6 sm:h-8 text-xs ${employee ? employee.color : "bg-white"} hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 relative ${
+                                          employee && isEmployeeOnVacation(employee.id, day.fullDate) 
+                                            ? "border-2 border-red-500 ring-red-500" 
+                                            : ""
+                                        }`}
                                         onDoubleClick={() => {
                                           if (employee) {
                                             setEditingHours({
@@ -2523,6 +2573,8 @@ export default function EmployeeScheduler() {
           </div>
         </div>
       )}
+
+
     </div>
   )
 }

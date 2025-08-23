@@ -1,0 +1,10 @@
+[33m52aa084[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Redesign project structure with modular dashboard system
+[33ma9ed3cc[m Remove Import button and functionality from main menu
+[33m8470582[m Optimize backend print layout to fit on one page
+[33m16daf2c[m Add automatic hourly backup system with Windows Task Scheduler
+[33m9624f9f[m Auto-backup: Hourly backup 2025-08-22 23:48
+[33m83a01dd[m Complete ShiftManager2 project with PM2, IndexedDB, and comprehensive features
+[33m5c148a0[m feat: fork Manager plan web app with new structure
+[33m57d3f8e[m feat: fork Manager plan web app with new structure
+[33m663c66e[m feat: fork Manager plan web app with new structure
+[33m6ffae45[m refactor: sync main changes in shiftmanager
