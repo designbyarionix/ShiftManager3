@@ -34,6 +34,7 @@ import html2canvas from "html2canvas"
 import { storageWrapper } from "@/lib/storage-wrapper"
 import { migrateFromLocalStorage, verifyMigration } from "@/lib/migrate-data"
 import { getStorageStats } from "@/lib/storage-utils"
+import { vercelStorage } from "@/lib/vercel-storage"
 
 interface Employee {
   id: string
@@ -696,7 +697,8 @@ export default function EmployeeScheduler() {
   }
 
   const saveDataToStorage = async (updatedEmployees?: Employee[]) => {
-    const saveKey = `schedule-${currentDate.getMonth()}-${currentDate.getFullYear()}`
+    const month = currentDate.getMonth()
+    const year = currentDate.getFullYear()
     const currentEmployees = updatedEmployees || employees
 
     const dataToSave: ScheduleData = {
@@ -714,7 +716,7 @@ export default function EmployeeScheduler() {
     console.log('💾 Data to save - employees:', currentEmployees)
     console.log('💾 Data to save - assignments:', assignments)
 
-    // Генерирай hash
+    // Generate hash
     dataToSave.dataHash = generateDataHash({
       employees: currentEmployees.map((e) => ({ id: e.id, name: e.name, customHours: e.customHours })),
       assignments,
@@ -724,23 +726,41 @@ export default function EmployeeScheduler() {
       dayNotes,
     })
 
-    console.log(`🔄 Saving data to storage: ${saveKey}`)
+    console.log(`🔄 Saving data to Vercel KV: month ${month}, year ${year}`)
     console.log('Data to save:', dataToSave)
 
     try {
-      // Save to storage wrapper (which handles both IndexedDB and localStorage)
-      await storageWrapper.setItem(saveKey, JSON.stringify(dataToSave))
-      console.log('✅ Successfully saved to storage system')
+      // Try to save to Vercel KV first (primary storage)
+      const vercelResult = await vercelStorage.saveSchedule(month, year, dataToSave)
+      if (vercelResult.success) {
+        console.log('✅ Successfully saved to Vercel KV')
+        
+        // Also save to local storage as backup
+        const saveKey = `schedule-${month}-${year}`
+        localStorage.setItem(saveKey, JSON.stringify(dataToSave))
+        console.log('✅ Backup saved to localStorage')
+      } else {
+        throw new Error('Vercel KV save failed')
+      }
     } catch (error) {
-      console.error('❌ Failed to save data:', error)
-      // Emergency fallback to localStorage only
-      localStorage.setItem(saveKey, JSON.stringify(dataToSave))
-      console.log('✅ Emergency save to localStorage')
+      console.error('❌ Vercel KV save failed, falling back to local storage:', error)
+      
+      // Fallback to local storage
+      const saveKey = `schedule-${month}-${year}`
+      try {
+        await storageWrapper.setItem(saveKey, JSON.stringify(dataToSave))
+        console.log('✅ Successfully saved to local storage system')
+      } catch (localError) {
+        console.error('❌ Local storage also failed:', localError)
+        // Emergency fallback to localStorage only
+        localStorage.setItem(saveKey, JSON.stringify(dataToSave))
+        console.log('✅ Emergency save to localStorage')
+      }
     }
 
-    // Генерирай нов share URL
+    // Generate new share URL
     const currentUrl = window.location.origin + window.location.pathname
-    const newShareUrl = `${currentUrl}?view=readonly&month=${currentDate.getMonth()}&year=${currentDate.getFullYear()}&hash=${dataToSave.dataHash}`
+    const newShareUrl = `${currentUrl}?view=readonly&month=${month}&year=${year}&hash=${dataToSave.dataHash}`
     setShareUrl(newShareUrl)
     setLastUpdate(Date.now())
 
@@ -833,93 +853,139 @@ export default function EmployeeScheduler() {
   }
 
   const loadData = async () => {
-    const saveKey = `schedule-${currentDate.getMonth()}-${currentDate.getFullYear()}`
-    console.log(`🔄 Loading data for key: ${saveKey}`)
+    const month = currentDate.getMonth()
+    const year = currentDate.getFullYear()
+    console.log(`🔄 Loading data for month: ${month}, year: ${year}`)
     
     try {
-      // Try to load from IndexedDB first (primary source)
-      console.log('📊 Attempting to load from IndexedDB...')
-      let savedData = await storageWrapper.getItem(saveKey)
+      // Try to load from Vercel KV first (primary source)
+      console.log('📊 Attempting to load from Vercel KV...')
+      const vercelData = await vercelStorage.loadSchedule(month, year)
       
-      if (savedData) {
-        console.log('✅ Data found in IndexedDB, length:', savedData.length)
-        try {
-          const data: ScheduleData = JSON.parse(savedData)
-          console.log('📝 Parsed data from IndexedDB:', {
-            employees: data.employees?.length || 0,
-            assignments: data.assignments?.length || 0,
-            holidays: data.holidays?.length || 0,
-            vacations: data.vacations?.length || 0,
-            monthInfos: data.monthInfos?.length || 0,
-            dayNotes: data.dayNotes?.length || 0
-          })
-          
-          // Set data from IndexedDB (primary source)
-          setEmployees(data.employees || defaultEmployees)
-          setAssignments(data.assignments || dummyAssignments)
-          setHolidays(data.holidays || [])
-          setVacations(data.vacations || [])
-          setMonthInfos(data.monthInfos || [])
-          setDayNotes(data.dayNotes || [])
-          setLastUpdate(data.lastSaved || Date.now())
+      if (vercelData) {
+        console.log('✅ Data found in Vercel KV:', {
+          employees: vercelData.employees?.length || 0,
+          assignments: vercelData.assignments?.length || 0,
+          holidays: vercelData.holidays?.length || 0,
+          vacations: vercelData.vacations?.length || 0,
+          monthInfos: vercelData.monthInfos?.length || 0,
+          dayNotes: vercelData.dayNotes?.length || 0
+        })
+        
+        // Set data from Vercel KV (primary source)
+        setEmployees(vercelData.employees || defaultEmployees)
+        setAssignments(vercelData.assignments || dummyAssignments)
+        setHolidays(vercelData.holidays || [])
+        setVacations(vercelData.vacations || [])
+        setMonthInfos(vercelData.monthInfos || [])
+        setDayNotes(vercelData.dayNotes || [])
+        setLastUpdate(vercelData.lastSaved || Date.now())
 
-          console.log('🎯 Set vacations from IndexedDB:', data.vacations || [])
-          console.log('🎯 Set employees from IndexedDB:', data.employees || defaultEmployees)
+        console.log('🎯 Set vacations from Vercel KV:', vercelData.vacations || [])
+        console.log('🎯 Set employees from Vercel KV:', vercelData.employees || defaultEmployees)
 
-          setNotification({
-            type: "success",
-            message: "Plan erfolgreich geladen!",
-          })
-          return // Exit early, data loaded successfully
-        } catch (error) {
-          console.error('❌ Error parsing IndexedDB data:', error)
-        }
+        setNotification({
+          type: "success",
+          message: "Plan erfolgreich von Vercel geladen!",
+        })
+        return // Exit early, data loaded successfully
       }
       
-      // Fallback to localStorage only if IndexedDB fails completely
-      console.log('⚠️ No data in IndexedDB, trying localStorage fallback...')
-      const localData = localStorage.getItem(saveKey)
-      if (localData) {
-        try {
-          const data: ScheduleData = JSON.parse(localData)
-          console.log('📝 Parsed data from localStorage fallback:', {
-            employees: data.employees?.length || 0,
-            assignments: data.assignments?.length || 0,
-            holidays: data.holidays?.length || 0,
-            vacations: data.vacations?.length || 0,
-            monthInfos: data.monthInfos?.length || 0,
-            dayNotes: data.dayNotes?.length || 0
-          })
-          
-          // Set data from localStorage fallback
-          setEmployees(data.employees || defaultEmployees)
-          setAssignments(data.assignments || dummyAssignments)
-          setHolidays(data.holidays || [])
-          setVacations(data.vacations || [])
-          setMonthInfos(data.monthInfos || [])
-          setDayNotes(data.dayNotes || [])
-          setLastUpdate(data.lastSaved || Date.now())
-          
-          console.log('🎯 Set vacations from final localStorage fallback:', data.vacations || [])
-          console.log('🎯 Set employees from final localStorage fallback:', data.employees || defaultEmployees)
+      // Fallback to local storage if Vercel KV has no data
+      console.log('⚠️ No data in Vercel KV, trying local storage fallback...')
+      const saveKey = `schedule-${month}-${year}`
+      
+      try {
+        // Try to load from IndexedDB first
+        let savedData = await storageWrapper.getItem(saveKey)
+        
+        if (savedData) {
+          console.log('✅ Data found in IndexedDB fallback, length:', savedData.length)
+          try {
+            const data: ScheduleData = JSON.parse(savedData)
+            console.log('📝 Parsed data from IndexedDB fallback:', {
+              employees: data.employees?.length || 0,
+              assignments: data.assignments?.length || 0,
+              holidays: data.holidays?.length || 0,
+              vacations: data.vacations?.length || 0,
+              monthInfos: data.monthInfos?.length || 0,
+              dayNotes: data.dayNotes?.length || 0
+            })
+            
+            // Set data from IndexedDB fallback
+            setEmployees(data.employees || defaultEmployees)
+            setAssignments(data.assignments || dummyAssignments)
+            setHolidays(data.holidays || [])
+            setVacations(data.vacations || [])
+            setMonthInfos(data.monthInfos || [])
+            setDayNotes(data.dayNotes || [])
+            setLastUpdate(data.lastSaved || Date.now())
 
+            console.log('🎯 Set vacations from IndexedDB fallback:', data.vacations || [])
+            console.log('🎯 Set employees from IndexedDB fallback:', data.employees || defaultEmployees)
+
+            setNotification({
+              type: "success",
+              message: "Plan erfolgreich von lokaler Speicherung geladen!",
+            })
+            return // Exit early, data loaded successfully
+          } catch (error) {
+            console.error('❌ Error parsing IndexedDB fallback data:', error)
+          }
+        }
+        
+        // Final fallback to localStorage
+        console.log('⚠️ No data in IndexedDB, trying localStorage final fallback...')
+        const localData = localStorage.getItem(saveKey)
+        if (localData) {
+          try {
+            const data: ScheduleData = JSON.parse(localData)
+            console.log('📝 Parsed data from localStorage final fallback:', {
+              employees: data.employees?.length || 0,
+              assignments: data.assignments?.length || 0,
+              holidays: data.holidays?.length || 0,
+              vacations: data.vacations?.length || 0,
+              monthInfos: data.monthInfos?.length || 0,
+              dayNotes: data.dayNotes?.length || 0
+            })
+            
+            // Set data from localStorage final fallback
+            setEmployees(data.employees || defaultEmployees)
+            setAssignments(data.assignments || dummyAssignments)
+            setHolidays(data.holidays || [])
+            setVacations(data.vacations || [])
+            setMonthInfos(data.monthInfos || [])
+            setDayNotes(data.dayNotes || [])
+            setLastUpdate(data.lastSaved || Date.now())
+            
+            console.log('🎯 Set vacations from localStorage final fallback:', data.vacations || [])
+            console.log('🎯 Set employees from localStorage final fallback:', data.employees || defaultEmployees)
+
+            setNotification({
+              type: "success",
+              message: "Plan erfolgreich von lokaler Speicherung geladen!",
+            })
+          } catch (error) {
+            console.error('❌ Error parsing localStorage final fallback data:', error)
+            setNotification({
+              type: "error",
+              message: "Fehler beim Laden der Daten!",
+            })
+          }
+        } else {
+          console.log('❌ No data found in any storage system')
           setNotification({
             type: "success",
-            message: "Plan erfolgreich geladen!",
-          })
-        } catch (error) {
-          console.error('❌ Error parsing localStorage data:', error)
-          setNotification({
-            type: "error",
-            message: "Fehler beim Laden der Daten!",
+            message: "Keine gespeicherten Daten gefunden. Verwenden Sie lokale Speicherung.",
           })
         }
-      } else {
-        console.log('❌ No data found in either storage')
+      } catch (error) {
+        console.warn('❌ Failed to load from local storage fallback:', error)
       }
     } catch (error) {
-      console.warn('❌ Failed to load from IndexedDB, trying localStorage:', error)
-      // Final fallback to localStorage
+      console.error('❌ Vercel KV load failed, trying local storage:', error)
+      // Try local storage as final fallback
+      const saveKey = `schedule-${month}-${year}`
       const localData = localStorage.getItem(saveKey)
       if (localData) {
         try {
@@ -1701,12 +1767,11 @@ export default function EmployeeScheduler() {
       )}
 
       {/* Data Persistence Notice */}
-      <Alert className="mb-4 border-orange-500 bg-orange-50">
-        <Info className="h-4 w-4 text-orange-600" />
-        <AlertDescription className="text-orange-800">
-          <strong>💡 Tipp:</strong> Daten werden nur lokal gespeichert. Um zwischen verschiedenen Geräten/Umgebungen zu synchronisieren, 
-          verwenden Sie die <strong>Export</strong> und <strong>Import</strong> Buttons. 
-          Exportieren Sie Ihre Daten nach dem Speichern und importieren Sie sie in der neuen Umgebung.
+      <Alert className="mb-4 border-green-500 bg-green-50">
+        <Info className="h-4 w-4 text-green-600" />
+        <AlertDescription className="text-green-800">
+          <strong>✅ Vercel Storage Aktiv:</strong> Alle Daten werden automatisch auf Vercel gespeichert und sind von überall verfügbar! 
+          Keine Export/Import-Funktionen mehr nötig. Ihre Schichten bleiben auch nach dem Neuladen der Seite erhalten.
         </AlertDescription>
       </Alert>
 
